@@ -1,0 +1,11 @@
+# SYNTHETIC FIXTURE — NOT A REAL PERSON OR JOB
+测试候选人（纯虚构）
+邮箱 | fixture.candidate@example.invalid | 备用邮箱 | fixture.backup@example.invalid
+电话 | 010-00000000 | 备用电话 | 021-00000000
+地址 | Example District, Test City（虚构地址）
+
+教育经历 | 石桥设计学院（虚构） | 工业设计本科 | 2023.09-2027.06
+项目经历 | 无障碍地图原型 | 交互设计 | 2025.02-2025.05
+项目动作 | 访谈 10 名虚构测试参与者 | 结果 | 完成 2 轮原型验证
+校园经历 | 设计社（虚构） | 活动协调 | 2024.09-2025.06
+技能 | Figma | 用户研究 | Excel

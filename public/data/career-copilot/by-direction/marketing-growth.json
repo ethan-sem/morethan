@@ -1,0 +1,432 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "status": "published",
+  "locale": "zh-CN",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "disclaimer": "本数据包是公司与岗位族目标池，不代表具体岗位当前在招，也不构成公司永久档次；冲刺、主申、稳妥和探索必须根据用户已确认事实、具体 JD 与申请时重新核验的官网信息动态计算。",
+  "tagDefinitions": [
+    {
+      "id": "industry-internet",
+      "label": "互联网与平台",
+      "category": "industry"
+    },
+    {
+      "id": "industry-technology",
+      "label": "科技与软件",
+      "category": "industry"
+    },
+    {
+      "id": "industry-hardware",
+      "label": "智能硬件与制造",
+      "category": "industry"
+    },
+    {
+      "id": "industry-automotive",
+      "label": "智能汽车",
+      "category": "industry"
+    },
+    {
+      "id": "industry-finance",
+      "label": "金融",
+      "category": "industry"
+    },
+    {
+      "id": "industry-telecom",
+      "label": "通信",
+      "category": "industry"
+    },
+    {
+      "id": "industry-consumer",
+      "label": "消费品",
+      "category": "industry"
+    },
+    {
+      "id": "industry-professional-services",
+      "label": "专业服务",
+      "category": "industry"
+    },
+    {
+      "id": "company-private",
+      "label": "民营企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-public",
+      "label": "上市公司",
+      "category": "company_type"
+    },
+    {
+      "id": "company-state-owned",
+      "label": "国有企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-foreign",
+      "label": "外资企业",
+      "category": "company_type"
+    }
+  ],
+  "companies": [
+    {
+      "id": "baidu",
+      "name": "百度",
+      "aliases": [],
+      "organizationType": "public_company",
+      "websiteUrl": "https://talent.baidu.com/jobs/campus",
+      "tags": [
+        "industry-technology",
+        "company-public"
+      ]
+    },
+    {
+      "id": "netease",
+      "name": "网易",
+      "aliases": [],
+      "organizationType": "public_company",
+      "websiteUrl": "https://campus.163.com/",
+      "tags": [
+        "industry-internet",
+        "company-public"
+      ]
+    },
+    {
+      "id": "amazon",
+      "name": "亚马逊",
+      "aliases": [
+        "Amazon"
+      ],
+      "organizationType": "foreign_enterprise",
+      "websiteUrl": "https://www.amazon.jobs/content/zh/career-programs/university/internships-for-students",
+      "tags": [
+        "industry-technology",
+        "company-foreign"
+      ]
+    },
+    {
+      "id": "pg",
+      "name": "宝洁中国",
+      "aliases": [
+        "P&G"
+      ],
+      "organizationType": "foreign_enterprise",
+      "websiteUrl": "https://careers.pg.com.cn/cn/zh/home",
+      "tags": [
+        "industry-consumer",
+        "company-foreign"
+      ]
+    },
+    {
+      "id": "loreal",
+      "name": "欧莱雅中国",
+      "aliases": [
+        "L'Oréal"
+      ],
+      "organizationType": "foreign_enterprise",
+      "websiteUrl": "https://www.lorealchina.com/zh-cn/careers/%E6%97%A0%E9%99%90%E6%9C%BA%E9%81%87%E5%90%91%E4%BD%A0%E6%95%9E%E5%BC%80/",
+      "tags": [
+        "industry-consumer",
+        "company-foreign"
+      ]
+    }
+  ],
+  "roleFamilies": [
+    {
+      "id": "marketing-growth",
+      "label": "市场/品牌/增长",
+      "aliases": [
+        "品牌营销",
+        "增长营销"
+      ],
+      "parentId": null,
+      "tags": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-baidu",
+      "type": "company_careers",
+      "title": "百度校园招聘",
+      "publisher": "百度",
+      "url": "https://talent.baidu.com/jobs/campus",
+      "capturedAt": "2026-08-13T12:06:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-netease",
+      "type": "company_careers",
+      "title": "网易校园招聘",
+      "publisher": "网易",
+      "url": "https://campus.163.com/",
+      "capturedAt": "2026-08-13T12:10:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-amazon",
+      "type": "company_careers",
+      "title": "Amazon 学生招聘",
+      "publisher": "Amazon",
+      "url": "https://www.amazon.jobs/content/zh/career-programs/university/internships-for-students",
+      "capturedAt": "2026-08-13T12:14:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-pg",
+      "type": "company_careers",
+      "title": "宝洁中国校园与初级人才招聘",
+      "publisher": "宝洁中国",
+      "url": "https://careers.pg.com.cn/cn/zh/home",
+      "capturedAt": "2026-08-13T12:24:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-loreal",
+      "type": "company_careers",
+      "title": "欧莱雅中国招聘",
+      "publisher": "欧莱雅中国",
+      "url": "https://www.lorealchina.com/zh-cn/careers/%E6%97%A0%E9%99%90%E6%9C%BA%E9%81%87%E5%90%91%E4%BD%A0%E6%95%9E%E5%BC%80/",
+      "capturedAt": "2026-08-13T12:25:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    }
+  ],
+  "recruitmentEntrances": [
+    {
+      "id": "ent-baidu",
+      "companyId": "baidu",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://talent.baidu.com/jobs/campus",
+      "sourceIds": [
+        "src-baidu"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:06:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-netease",
+      "companyId": "netease",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://campus.163.com/",
+      "sourceIds": [
+        "src-netease"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:10:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-amazon",
+      "companyId": "amazon",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://www.amazon.jobs/content/zh/career-programs/university/internships-for-students",
+      "sourceIds": [
+        "src-amazon"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:14:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-pg",
+      "companyId": "pg",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://careers.pg.com.cn/cn/zh/home",
+      "sourceIds": [
+        "src-pg"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:24:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-loreal",
+      "companyId": "loreal",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://www.lorealchina.com/zh-cn/careers/%E6%97%A0%E9%99%90%E6%9C%BA%E9%81%87%E5%90%91%E4%BD%A0%E6%95%9E%E5%BC%80/",
+      "sourceIds": [
+        "src-loreal"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:25:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    }
+  ],
+  "records": [
+    {
+      "id": "pool-baidu-marketing-growth",
+      "companyId": "baidu",
+      "roleFamilyId": "marketing-growth",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-baidu"
+      ],
+      "sourceIds": [
+        "src-baidu"
+      ],
+      "capturedAt": "2026-08-13T12:06:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-netease-marketing-growth",
+      "companyId": "netease",
+      "roleFamilyId": "marketing-growth",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-netease"
+      ],
+      "sourceIds": [
+        "src-netease"
+      ],
+      "capturedAt": "2026-08-13T12:10:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-pg-marketing-growth",
+      "companyId": "pg",
+      "roleFamilyId": "marketing-growth",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-pg"
+      ],
+      "sourceIds": [
+        "src-pg"
+      ],
+      "capturedAt": "2026-08-13T12:24:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体项目、岗位和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-loreal-marketing-growth",
+      "companyId": "loreal",
+      "roleFamilyId": "marketing-growth",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-loreal"
+      ],
+      "sourceIds": [
+        "src-loreal"
+      ],
+      "capturedAt": "2026-08-13T12:25:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体项目、岗位和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-amazon-marketing-growth",
+      "companyId": "amazon",
+      "roleFamilyId": "marketing-growth",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-amazon"
+      ],
+      "sourceIds": [
+        "src-amazon"
+      ],
+      "capturedAt": "2026-08-13T12:14:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    }
+  ]
+}

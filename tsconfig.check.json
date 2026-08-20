@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "types": ["vite/client"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/career-copilot/config.js",
+    "src/career-copilot/domain/**/*.js",
+    "src/career-copilot/extractors/**/*.js",
+    "src/career-copilot/lib/**/*.js",
+    "src/career-copilot/parsers/**/*.js",
+    "src/career-copilot/privacy/**/*.js"
+  ],
+  "exclude": ["**/*.test.js", "**/*.worker.js"]
+}

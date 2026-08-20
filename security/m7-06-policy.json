@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewedAt": "2026-08-20",
+  "networkReaders": [
+    "src/career-copilot/lib/companyRolePoolLoader.js"
+  ],
+  "storageWriters": [
+    "src/career-copilot/lib/sessionStore.js"
+  ],
+  "cleanupModules": [
+    "src/career-copilot/lib/careerSessionCleanup.js"
+  ],
+  "reviewedCodeExceptions": [
+    {
+      "file": "public/game/app.js",
+      "rule": "innerHTML",
+      "sha256": "939bd85ef2cce07ac0f444cbf4def0280d7fbf2e0cc54c63c436ab815cce9545",
+      "severity": "P2",
+      "owner": "MoreThan 产品负责人",
+      "expiresAt": "2026-08-31",
+      "rationale": "独立秋招游戏只渲染仓库内固定事件与数值状态，不接收用户文本、文件或远程数据；以精确文件哈希锁定，任何修改都会重新触发安全复核。"
+    }
+  ]
+}

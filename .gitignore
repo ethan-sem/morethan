@@ -1,0 +1,17 @@
+# Dependencies, local package stores, builds and probes.
+node_modules/
+.pnpm-store/
+dist/
+tmp/
+output/
+outputs/
+work/
+
+# Local environment values and logs. Keep the public template only.
+.env
+.env.*
+!.env.example
+*.log
+
+# Local advisor workspaces and release backups. Published audit records live in docs/.
+work/career-data/releases/

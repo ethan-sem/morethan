@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetId": "morethan-career-copilot-synthetic-v1",
+  "updatedAt": "2026-08-14",
+  "disclaimer": "All entries are deliberately fictional test fixtures and must never be replaced with real applicant materials.",
+  "entries": [
+    { "id": "resume-empty", "kind": "resume", "file": "resumes/01-empty.txt", "language": "none", "scenarios": ["blank_input"], "expected": { "minFacts": 0 } },
+    { "id": "resume-stem-two-internships", "kind": "resume", "file": "resumes/02-stem-two-internships-zh.txt", "language": "zh", "scenarios": ["stem_related_internships", "chinese"], "expected": { "minFacts": 5, "factCategories": ["education", "internship", "project", "skill"] } },
+    { "id": "resume-business-no-metrics", "kind": "resume", "file": "resumes/03-business-no-metrics-zh.txt", "language": "zh", "scenarios": ["business_no_metrics", "chinese"], "expected": { "minFacts": 3, "factCategories": ["education", "project", "campus"] } },
+    { "id": "resume-cross-major-product", "kind": "resume", "file": "resumes/04-cross-major-product-zh.txt", "language": "zh", "scenarios": ["cross_major", "chinese"], "expected": { "minFacts": 4, "factCategories": ["education", "project", "skill"] } },
+    { "id": "resume-early-student", "kind": "resume", "file": "resumes/05-early-student-limited-zh.txt", "language": "zh", "scenarios": ["limited_experience", "chinese"], "expected": { "minFacts": 2, "factCategories": ["education", "skill"] } },
+    { "id": "resume-timeline-conflict", "kind": "resume", "file": "resumes/06-timeline-conflict-zh.txt", "language": "zh", "scenarios": ["timeline_conflict", "chinese"], "expected": { "minFacts": 4, "timelineFlagTypes": ["date_overlap", "date_conflict", "date_missing"] } },
+    { "id": "resume-english-data", "kind": "resume", "file": "resumes/07-english-data-resume.txt", "language": "en", "scenarios": ["english"], "expected": { "minFacts": 2 } },
+    { "id": "resume-bilingual-operations", "kind": "resume", "file": "resumes/08-bilingual-operations.txt", "language": "mixed", "scenarios": ["bilingual"], "expected": { "minFacts": 3 } },
+    { "id": "resume-dense-contacts-table", "kind": "resume", "file": "resumes/09-dense-contacts-table.txt", "language": "mixed", "scenarios": ["dense_contacts", "table_like", "chinese"], "expected": { "minFacts": 3, "privateFieldTypes": ["email", "phone"] } },
+    { "id": "resume-unheaded-minimal", "kind": "resume", "file": "resumes/10-unheaded-minimal-zh.txt", "language": "zh", "scenarios": ["unheaded_content", "limited_experience"], "expected": { "minFacts": 1 } },
+    { "id": "jd-product-high-match", "kind": "jd", "file": "jds/01-product-intern-high-match-zh.txt", "language": "zh", "scenarios": ["jd_high_match", "chinese"], "expected": { "minResponsibilities": 2, "minRequired": 2, "minPreferred": 1 } },
+    { "id": "jd-quant-low-match", "kind": "jd", "file": "jds/02-quant-research-low-match-zh.txt", "language": "zh", "scenarios": ["jd_low_match", "chinese"], "expected": { "minResponsibilities": 2, "minRequired": 2 } },
+    { "id": "jd-frontend-english", "kind": "jd", "file": "jds/03-frontend-intern-en.txt", "language": "en", "scenarios": ["english"], "expected": { "minResponsibilities": 2, "minRequired": 2, "minPreferred": 1 } },
+    { "id": "jd-operations-bilingual", "kind": "jd", "file": "jds/04-operations-bilingual.txt", "language": "mixed", "scenarios": ["bilingual"], "expected": { "minResponsibilities": 2, "minRequired": 2 } },
+    { "id": "jd-risk-language", "kind": "jd", "file": "jds/05-risk-language-zh.txt", "language": "zh", "scenarios": ["jd_risk_language", "chinese"], "expected": { "minResponsibilities": 1, "minRequired": 1, "riskTypes": ["discriminatory_language", "payment_request", "sensitive_data_request"] } },
+    { "id": "jd-empty", "kind": "jd", "file": "jds/06-empty.txt", "language": "none", "scenarios": ["blank_input"], "expected": { "errorCode": "JD_TEXT_TOO_SHORT" } }
+  ]
+}

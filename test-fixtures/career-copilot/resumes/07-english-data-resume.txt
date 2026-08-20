@@ -1,0 +1,15 @@
+# SYNTHETIC FIXTURE — NOT A REAL PERSON OR JOB
+Education
+Northstar Institute of Applied Studies (Fictional) | BSc Information Systems | 2023.09-2027.06
+
+Internship Experience
+Blue Meadow Analytics Lab (Fictional) | Data Intern | 2025.06-2025.09
+Cleaned a synthetic dataset with Python and SQL and documented five metric definitions
+Built a Tableau practice dashboard for three fictional teams
+
+Project Experience
+Student Service Survey | Analyst | 2025.02-2025.05
+Reviewed 120 synthetic responses and presented four testable findings
+
+Skills
+Python, SQL, Tableau, English

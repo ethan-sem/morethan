@@ -1,0 +1,433 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "status": "published",
+  "locale": "zh-CN",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "disclaimer": "本数据包是公司与岗位族目标池，不代表具体岗位当前在招，也不构成公司永久档次；冲刺、主申、稳妥和探索必须根据用户已确认事实、具体 JD 与申请时重新核验的官网信息动态计算。",
+  "tagDefinitions": [
+    {
+      "id": "industry-internet",
+      "label": "互联网与平台",
+      "category": "industry"
+    },
+    {
+      "id": "industry-technology",
+      "label": "科技与软件",
+      "category": "industry"
+    },
+    {
+      "id": "industry-hardware",
+      "label": "智能硬件与制造",
+      "category": "industry"
+    },
+    {
+      "id": "industry-automotive",
+      "label": "智能汽车",
+      "category": "industry"
+    },
+    {
+      "id": "industry-finance",
+      "label": "金融",
+      "category": "industry"
+    },
+    {
+      "id": "industry-telecom",
+      "label": "通信",
+      "category": "industry"
+    },
+    {
+      "id": "industry-consumer",
+      "label": "消费品",
+      "category": "industry"
+    },
+    {
+      "id": "industry-professional-services",
+      "label": "专业服务",
+      "category": "industry"
+    },
+    {
+      "id": "company-private",
+      "label": "民营企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-public",
+      "label": "上市公司",
+      "category": "company_type"
+    },
+    {
+      "id": "company-state-owned",
+      "label": "国有企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-foreign",
+      "label": "外资企业",
+      "category": "company_type"
+    }
+  ],
+  "companies": [
+    {
+      "id": "citics",
+      "name": "中信证券",
+      "aliases": [],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://careers.citics.com/zztf/",
+      "tags": [
+        "industry-finance",
+        "company-state-owned"
+      ]
+    },
+    {
+      "id": "cicc",
+      "name": "中金公司",
+      "aliases": [
+        "中国国际金融股份有限公司",
+        "CICC"
+      ],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://portal-oss.zhiye.com/108394/resource/9fb74f85-7919-4c96-a3fe-69eee903ebd6.html",
+      "tags": [
+        "industry-finance",
+        "company-state-owned"
+      ]
+    },
+    {
+      "id": "ey",
+      "name": "安永中国",
+      "aliases": [
+        "EY China"
+      ],
+      "organizationType": "other",
+      "websiteUrl": "https://www.ey.com/en_cn/careers/how-to-join-us",
+      "tags": [
+        "industry-professional-services"
+      ]
+    },
+    {
+      "id": "kpmg",
+      "name": "毕马威中国",
+      "aliases": [
+        "KPMG China"
+      ],
+      "organizationType": "other",
+      "websiteUrl": "https://kpmg.com/cn/en/careers/contact-us.html",
+      "tags": [
+        "industry-professional-services"
+      ]
+    },
+    {
+      "id": "deloitte",
+      "name": "德勤中国",
+      "aliases": [
+        "Deloitte China"
+      ],
+      "organizationType": "other",
+      "websiteUrl": "https://www.deloitte.com/cn/en/cn-careers/students.html",
+      "tags": [
+        "industry-professional-services"
+      ]
+    }
+  ],
+  "roleFamilies": [
+    {
+      "id": "finance-accounting",
+      "label": "金融/财会通用",
+      "aliases": [
+        "金融",
+        "财务",
+        "审计"
+      ],
+      "parentId": null,
+      "tags": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-citics",
+      "type": "company_careers",
+      "title": "中信证券招聘",
+      "publisher": "中信证券",
+      "url": "https://careers.citics.com/zztf/",
+      "capturedAt": "2026-08-13T12:19:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-cicc",
+      "type": "company_careers",
+      "title": "中金公司校园招聘",
+      "publisher": "中金公司",
+      "url": "https://portal-oss.zhiye.com/108394/resource/9fb74f85-7919-4c96-a3fe-69eee903ebd6.html",
+      "capturedAt": "2026-08-13T12:20:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-ey",
+      "type": "company_careers",
+      "title": "安永中国初入职场招聘",
+      "publisher": "安永中国",
+      "url": "https://www.ey.com/en_cn/careers/how-to-join-us",
+      "capturedAt": "2026-08-13T12:27:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-kpmg",
+      "type": "company_careers",
+      "title": "毕马威中国校园招聘",
+      "publisher": "毕马威中国",
+      "url": "https://kpmg.com/cn/en/careers/contact-us.html",
+      "capturedAt": "2026-08-13T12:28:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-deloitte",
+      "type": "company_careers",
+      "title": "德勤中国学生与毕业生招聘",
+      "publisher": "德勤中国",
+      "url": "https://www.deloitte.com/cn/en/cn-careers/students.html",
+      "capturedAt": "2026-08-13T12:29:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    }
+  ],
+  "recruitmentEntrances": [
+    {
+      "id": "ent-citics",
+      "companyId": "citics",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://careers.citics.com/zztf/",
+      "sourceIds": [
+        "src-citics"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:19:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-cicc",
+      "companyId": "cicc",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://portal-oss.zhiye.com/108394/resource/9fb74f85-7919-4c96-a3fe-69eee903ebd6.html",
+      "sourceIds": [
+        "src-cicc"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:20:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-ey",
+      "companyId": "ey",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://www.ey.com/en_cn/careers/how-to-join-us",
+      "sourceIds": [
+        "src-ey"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:27:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-kpmg",
+      "companyId": "kpmg",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://kpmg.com/cn/en/careers/contact-us.html",
+      "sourceIds": [
+        "src-kpmg"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:28:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-deloitte",
+      "companyId": "deloitte",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://www.deloitte.com/cn/en/cn-careers/students.html",
+      "sourceIds": [
+        "src-deloitte"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:29:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    }
+  ],
+  "records": [
+    {
+      "id": "pool-citics-finance-accounting",
+      "companyId": "citics",
+      "roleFamilyId": "finance-accounting",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-citics"
+      ],
+      "sourceIds": [
+        "src-citics"
+      ],
+      "capturedAt": "2026-08-13T12:19:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体业务线、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-cicc-finance-accounting",
+      "companyId": "cicc",
+      "roleFamilyId": "finance-accounting",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-cicc"
+      ],
+      "sourceIds": [
+        "src-cicc"
+      ],
+      "capturedAt": "2026-08-13T12:20:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体业务线、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-ey-finance-accounting",
+      "companyId": "ey",
+      "roleFamilyId": "finance-accounting",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-ey"
+      ],
+      "sourceIds": [
+        "src-ey"
+      ],
+      "capturedAt": "2026-08-13T12:27:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体项目、岗位和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-kpmg-finance-accounting",
+      "companyId": "kpmg",
+      "roleFamilyId": "finance-accounting",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-kpmg"
+      ],
+      "sourceIds": [
+        "src-kpmg"
+      ],
+      "capturedAt": "2026-08-13T12:28:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体项目、岗位和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-deloitte-finance-accounting",
+      "companyId": "deloitte",
+      "roleFamilyId": "finance-accounting",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-deloitte"
+      ],
+      "sourceIds": [
+        "src-deloitte"
+      ],
+      "capturedAt": "2026-08-13T12:29:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体项目、岗位和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    }
+  ]
+}

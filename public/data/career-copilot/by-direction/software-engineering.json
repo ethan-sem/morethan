@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "status": "published",
+  "locale": "zh-CN",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "disclaimer": "本数据包是公司与岗位族目标池，不代表具体岗位当前在招，也不构成公司永久档次；冲刺、主申、稳妥和探索必须根据用户已确认事实、具体 JD 与申请时重新核验的官网信息动态计算。",
+  "tagDefinitions": [
+    {
+      "id": "industry-internet",
+      "label": "互联网与平台",
+      "category": "industry"
+    },
+    {
+      "id": "industry-technology",
+      "label": "科技与软件",
+      "category": "industry"
+    },
+    {
+      "id": "industry-hardware",
+      "label": "智能硬件与制造",
+      "category": "industry"
+    },
+    {
+      "id": "industry-automotive",
+      "label": "智能汽车",
+      "category": "industry"
+    },
+    {
+      "id": "industry-finance",
+      "label": "金融",
+      "category": "industry"
+    },
+    {
+      "id": "industry-telecom",
+      "label": "通信",
+      "category": "industry"
+    },
+    {
+      "id": "industry-consumer",
+      "label": "消费品",
+      "category": "industry"
+    },
+    {
+      "id": "industry-professional-services",
+      "label": "专业服务",
+      "category": "industry"
+    },
+    {
+      "id": "company-private",
+      "label": "民营企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-public",
+      "label": "上市公司",
+      "category": "company_type"
+    },
+    {
+      "id": "company-state-owned",
+      "label": "国有企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-foreign",
+      "label": "外资企业",
+      "category": "company_type"
+    }
+  ],
+  "companies": [
+    {
+      "id": "microsoft",
+      "name": "微软",
+      "aliases": [
+        "Microsoft"
+      ],
+      "organizationType": "foreign_enterprise",
+      "websiteUrl": "https://careers.microsoft.com/v2/global/en/students",
+      "tags": [
+        "industry-technology",
+        "company-foreign"
+      ]
+    },
+    {
+      "id": "ccb",
+      "name": "中国建设银行",
+      "aliases": [
+        "建设银行",
+        "建行"
+      ],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://www2.ccb.com/cn/recruit/index.html",
+      "tags": [
+        "industry-finance",
+        "company-state-owned"
+      ]
+    },
+    {
+      "id": "china-mobile",
+      "name": "中国移动",
+      "aliases": [],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://job.10086.cn/",
+      "tags": [
+        "industry-telecom",
+        "company-state-owned"
+      ]
+    },
+    {
+      "id": "china-telecom",
+      "name": "中国电信",
+      "aliases": [],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://job.chinatelecom.com.cn/wt/TELE/web/index",
+      "tags": [
+        "industry-telecom",
+        "company-state-owned"
+      ]
+    },
+    {
+      "id": "china-unicom",
+      "name": "中国联通",
+      "aliases": [],
+      "organizationType": "state_owned",
+      "websiteUrl": "https://www.chinaunicom.com.cn/46/menu01/528/column06",
+      "tags": [
+        "industry-telecom",
+        "company-state-owned"
+      ]
+    }
+  ],
+  "roleFamilies": [
+    {
+      "id": "software-engineering",
+      "label": "软件研发",
+      "aliases": [
+        "软件工程",
+        "研发工程师"
+      ],
+      "parentId": null,
+      "tags": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-microsoft",
+      "type": "company_careers",
+      "title": "微软学生与初入职场招聘",
+      "publisher": "Microsoft",
+      "url": "https://careers.microsoft.com/v2/global/en/students",
+      "capturedAt": "2026-08-13T12:13:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-ccb",
+      "type": "company_careers",
+      "title": "中国建设银行招聘",
+      "publisher": "中国建设银行",
+      "url": "https://www2.ccb.com/cn/recruit/index.html",
+      "capturedAt": "2026-08-13T12:16:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-china-mobile",
+      "type": "company_careers",
+      "title": "中国移动招聘",
+      "publisher": "中国移动",
+      "url": "https://job.10086.cn/",
+      "capturedAt": "2026-08-13T12:21:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-china-telecom",
+      "type": "company_careers",
+      "title": "中国电信校园招聘",
+      "publisher": "中国电信",
+      "url": "https://job.chinatelecom.com.cn/wt/TELE/web/index",
+      "capturedAt": "2026-08-13T12:22:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-china-unicom",
+      "type": "company_careers",
+      "title": "中国联通校园招聘",
+      "publisher": "中国联通",
+      "url": "https://www.chinaunicom.com.cn/46/menu01/528/column06",
+      "capturedAt": "2026-08-13T12:23:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    }
+  ],
+  "recruitmentEntrances": [
+    {
+      "id": "ent-microsoft",
+      "companyId": "microsoft",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://careers.microsoft.com/v2/global/en/students",
+      "sourceIds": [
+        "src-microsoft"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:13:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-ccb",
+      "companyId": "ccb",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://www2.ccb.com/cn/recruit/index.html",
+      "sourceIds": [
+        "src-ccb"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:16:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-china-mobile",
+      "companyId": "china-mobile",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://job.10086.cn/",
+      "sourceIds": [
+        "src-china-mobile"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:21:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-china-telecom",
+      "companyId": "china-telecom",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://job.chinatelecom.com.cn/wt/TELE/web/index",
+      "sourceIds": [
+        "src-china-telecom"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:22:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-china-unicom",
+      "companyId": "china-unicom",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://www.chinaunicom.com.cn/46/menu01/528/column06",
+      "sourceIds": [
+        "src-china-unicom"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:23:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    }
+  ],
+  "records": [
+    {
+      "id": "pool-microsoft-software-engineering",
+      "companyId": "microsoft",
+      "roleFamilyId": "software-engineering",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-microsoft"
+      ],
+      "sourceIds": [
+        "src-microsoft"
+      ],
+      "capturedAt": "2026-08-13T12:13:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-china-mobile-software-engineering",
+      "companyId": "china-mobile",
+      "roleFamilyId": "software-engineering",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-china-mobile"
+      ],
+      "sourceIds": [
+        "src-china-mobile"
+      ],
+      "capturedAt": "2026-08-13T12:21:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体下属单位、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-china-telecom-software-engineering",
+      "companyId": "china-telecom",
+      "roleFamilyId": "software-engineering",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-china-telecom"
+      ],
+      "sourceIds": [
+        "src-china-telecom"
+      ],
+      "capturedAt": "2026-08-13T12:22:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体下属单位、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-china-unicom-software-engineering",
+      "companyId": "china-unicom",
+      "roleFamilyId": "software-engineering",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-china-unicom"
+      ],
+      "sourceIds": [
+        "src-china-unicom"
+      ],
+      "capturedAt": "2026-08-13T12:23:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体下属单位、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-ccb-software-engineering",
+      "companyId": "ccb",
+      "roleFamilyId": "software-engineering",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-ccb"
+      ],
+      "sourceIds": [
+        "src-ccb"
+      ],
+      "capturedAt": "2026-08-13T12:16:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体机构、岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "directions": {
+    "product-manager": {
+      "file": "./by-direction/product-manager.json",
+      "rawBytes": 11590,
+      "gzipBytes": 1853,
+      "records": 5
+    },
+    "product-operations": {
+      "file": "./by-direction/product-operations.json",
+      "rawBytes": 11572,
+      "gzipBytes": 1831,
+      "records": 5
+    },
+    "marketing-growth": {
+      "file": "./by-direction/marketing-growth.json",
+      "rawBytes": 11987,
+      "gzipBytes": 2030,
+      "records": 5
+    },
+    "software-engineering": {
+      "file": "./by-direction/software-engineering.json",
+      "rawBytes": 12061,
+      "gzipBytes": 1953,
+      "records": 5
+    },
+    "data-business-analysis": {
+      "file": "./by-direction/data-business-analysis.json",
+      "rawBytes": 11807,
+      "gzipBytes": 1920,
+      "records": 5
+    },
+    "finance-accounting": {
+      "file": "./by-direction/finance-accounting.json",
+      "rawBytes": 11989,
+      "gzipBytes": 2007,
+      "records": 5
+    }
+  }
+}

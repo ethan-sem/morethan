@@ -1,0 +1,10 @@
+# SYNTHETIC FIXTURE — NOT A REAL PERSON OR JOB
+Frontend Engineering Intern (Fictional Role)
+Responsibilities
+- Build accessible React interfaces from reviewed designs
+- Write unit tests and investigate synthetic performance traces
+Required Qualifications
+- Currently pursuing a bachelor's degree and available three days per week
+- Working knowledge of JavaScript, HTML, CSS, and Git
+Nice to Have
+- Familiarity with TypeScript or automated accessibility testing

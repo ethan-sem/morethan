@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "status": "published",
+  "locale": "zh-CN",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "disclaimer": "本数据包是公司与岗位族目标池，不代表具体岗位当前在招，也不构成公司永久档次；冲刺、主申、稳妥和探索必须根据用户已确认事实、具体 JD 与申请时重新核验的官网信息动态计算。",
+  "tagDefinitions": [
+    {
+      "id": "industry-internet",
+      "label": "互联网与平台",
+      "category": "industry"
+    },
+    {
+      "id": "industry-technology",
+      "label": "科技与软件",
+      "category": "industry"
+    },
+    {
+      "id": "industry-hardware",
+      "label": "智能硬件与制造",
+      "category": "industry"
+    },
+    {
+      "id": "industry-automotive",
+      "label": "智能汽车",
+      "category": "industry"
+    },
+    {
+      "id": "industry-finance",
+      "label": "金融",
+      "category": "industry"
+    },
+    {
+      "id": "industry-telecom",
+      "label": "通信",
+      "category": "industry"
+    },
+    {
+      "id": "industry-consumer",
+      "label": "消费品",
+      "category": "industry"
+    },
+    {
+      "id": "industry-professional-services",
+      "label": "专业服务",
+      "category": "industry"
+    },
+    {
+      "id": "company-private",
+      "label": "民营企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-public",
+      "label": "上市公司",
+      "category": "company_type"
+    },
+    {
+      "id": "company-state-owned",
+      "label": "国有企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-foreign",
+      "label": "外资企业",
+      "category": "company_type"
+    }
+  ],
+  "companies": [
+    {
+      "id": "huawei",
+      "name": "华为",
+      "aliases": [
+        "华为技术有限公司"
+      ],
+      "organizationType": "private",
+      "websiteUrl": "https://career.huawei.com/cn/campus-recruitment",
+      "tags": [
+        "industry-hardware",
+        "company-private"
+      ]
+    },
+    {
+      "id": "xiaomi",
+      "name": "小米",
+      "aliases": [
+        "小米集团"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://hr.xiaomi.com/website/campus.html",
+      "tags": [
+        "industry-hardware",
+        "company-public"
+      ]
+    },
+    {
+      "id": "lenovo",
+      "name": "联想",
+      "aliases": [
+        "联想集团"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://talent.lenovo.com.cn/campus",
+      "tags": [
+        "industry-hardware",
+        "company-public"
+      ]
+    },
+    {
+      "id": "dji",
+      "name": "大疆",
+      "aliases": [
+        "DJI"
+      ],
+      "organizationType": "private",
+      "websiteUrl": "https://careers.dji.com/zh-CN/campus",
+      "tags": [
+        "industry-hardware",
+        "company-private"
+      ]
+    },
+    {
+      "id": "nio",
+      "name": "蔚来",
+      "aliases": [
+        "NIO"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://www.nio.com/careers",
+      "tags": [
+        "industry-automotive",
+        "company-public"
+      ]
+    }
+  ],
+  "roleFamilies": [
+    {
+      "id": "product-manager",
+      "label": "产品经理",
+      "aliases": [
+        "产品",
+        "产品策划"
+      ],
+      "parentId": null,
+      "tags": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-huawei",
+      "type": "company_careers",
+      "title": "华为校园招聘",
+      "publisher": "华为",
+      "url": "https://career.huawei.com/cn/campus-recruitment",
+      "capturedAt": "2026-08-13T12:00:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-xiaomi",
+      "type": "company_careers",
+      "title": "小米校园招聘",
+      "publisher": "小米",
+      "url": "https://hr.xiaomi.com/website/campus.html",
+      "capturedAt": "2026-08-13T12:07:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-lenovo",
+      "type": "company_careers",
+      "title": "联想校园招聘",
+      "publisher": "联想",
+      "url": "https://talent.lenovo.com.cn/campus",
+      "capturedAt": "2026-08-13T12:08:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-dji",
+      "type": "company_careers",
+      "title": "大疆校园招聘",
+      "publisher": "大疆",
+      "url": "https://careers.dji.com/zh-CN/campus",
+      "capturedAt": "2026-08-13T12:09:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-nio",
+      "type": "company_careers",
+      "title": "蔚来招聘",
+      "publisher": "蔚来",
+      "url": "https://www.nio.com/careers",
+      "capturedAt": "2026-08-13T12:12:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    }
+  ],
+  "recruitmentEntrances": [
+    {
+      "id": "ent-huawei",
+      "companyId": "huawei",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://career.huawei.com/cn/campus-recruitment",
+      "sourceIds": [
+        "src-huawei"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:00:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-xiaomi",
+      "companyId": "xiaomi",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://hr.xiaomi.com/website/campus.html",
+      "sourceIds": [
+        "src-xiaomi"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:07:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-lenovo",
+      "companyId": "lenovo",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://talent.lenovo.com.cn/campus",
+      "sourceIds": [
+        "src-lenovo"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:08:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-dji",
+      "companyId": "dji",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://careers.dji.com/zh-CN/campus",
+      "sourceIds": [
+        "src-dji"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:09:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-nio",
+      "companyId": "nio",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://www.nio.com/careers",
+      "sourceIds": [
+        "src-nio"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:12:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    }
+  ],
+  "records": [
+    {
+      "id": "pool-huawei-product-manager",
+      "companyId": "huawei",
+      "roleFamilyId": "product-manager",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-huawei"
+      ],
+      "sourceIds": [
+        "src-huawei"
+      ],
+      "capturedAt": "2026-08-13T12:00:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-xiaomi-product-manager",
+      "companyId": "xiaomi",
+      "roleFamilyId": "product-manager",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-xiaomi"
+      ],
+      "sourceIds": [
+        "src-xiaomi"
+      ],
+      "capturedAt": "2026-08-13T12:07:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-lenovo-product-manager",
+      "companyId": "lenovo",
+      "roleFamilyId": "product-manager",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-lenovo"
+      ],
+      "sourceIds": [
+        "src-lenovo"
+      ],
+      "capturedAt": "2026-08-13T12:08:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-dji-product-manager",
+      "companyId": "dji",
+      "roleFamilyId": "product-manager",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-dji"
+      ],
+      "sourceIds": [
+        "src-dji"
+      ],
+      "capturedAt": "2026-08-13T12:09:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-nio-product-manager",
+      "companyId": "nio",
+      "roleFamilyId": "product-manager",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-nio"
+      ],
+      "sourceIds": [
+        "src-nio"
+      ],
+      "capturedAt": "2026-08-13T12:12:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验中国地区具体岗位、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    }
+  ]
+}

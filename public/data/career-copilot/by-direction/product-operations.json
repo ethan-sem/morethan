@@ -1,0 +1,433 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetVersion": "2026.08.1",
+  "status": "published",
+  "locale": "zh-CN",
+  "publishedAt": "2026-08-14T00:00:00.000Z",
+  "validThrough": "2026-08-20",
+  "disclaimer": "本数据包是公司与岗位族目标池，不代表具体岗位当前在招，也不构成公司永久档次；冲刺、主申、稳妥和探索必须根据用户已确认事实、具体 JD 与申请时重新核验的官网信息动态计算。",
+  "tagDefinitions": [
+    {
+      "id": "industry-internet",
+      "label": "互联网与平台",
+      "category": "industry"
+    },
+    {
+      "id": "industry-technology",
+      "label": "科技与软件",
+      "category": "industry"
+    },
+    {
+      "id": "industry-hardware",
+      "label": "智能硬件与制造",
+      "category": "industry"
+    },
+    {
+      "id": "industry-automotive",
+      "label": "智能汽车",
+      "category": "industry"
+    },
+    {
+      "id": "industry-finance",
+      "label": "金融",
+      "category": "industry"
+    },
+    {
+      "id": "industry-telecom",
+      "label": "通信",
+      "category": "industry"
+    },
+    {
+      "id": "industry-consumer",
+      "label": "消费品",
+      "category": "industry"
+    },
+    {
+      "id": "industry-professional-services",
+      "label": "专业服务",
+      "category": "industry"
+    },
+    {
+      "id": "company-private",
+      "label": "民营企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-public",
+      "label": "上市公司",
+      "category": "company_type"
+    },
+    {
+      "id": "company-state-owned",
+      "label": "国有企业",
+      "category": "company_type"
+    },
+    {
+      "id": "company-foreign",
+      "label": "外资企业",
+      "category": "company_type"
+    }
+  ],
+  "companies": [
+    {
+      "id": "bytedance",
+      "name": "字节跳动",
+      "aliases": [],
+      "organizationType": "private",
+      "websiteUrl": "https://jobs.bytedance.com/campus",
+      "tags": [
+        "industry-internet",
+        "company-private"
+      ]
+    },
+    {
+      "id": "jd",
+      "name": "京东",
+      "aliases": [
+        "京东集团"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://campus.jd.com/",
+      "tags": [
+        "industry-internet",
+        "company-public"
+      ]
+    },
+    {
+      "id": "meituan",
+      "name": "美团",
+      "aliases": [],
+      "organizationType": "public_company",
+      "websiteUrl": "https://zhaopin.meituan.com/web/campus",
+      "tags": [
+        "industry-internet",
+        "company-public"
+      ]
+    },
+    {
+      "id": "kuaishou",
+      "name": "快手",
+      "aliases": [
+        "快手科技"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://campus.kuaishou.cn/",
+      "tags": [
+        "industry-internet",
+        "company-public"
+      ]
+    },
+    {
+      "id": "ctrip",
+      "name": "携程集团",
+      "aliases": [
+        "携程",
+        "Trip.com Group"
+      ],
+      "organizationType": "public_company",
+      "websiteUrl": "https://campus.ctrip.com/",
+      "tags": [
+        "industry-internet",
+        "company-public"
+      ]
+    }
+  ],
+  "roleFamilies": [
+    {
+      "id": "product-operations",
+      "label": "产品/用户运营",
+      "aliases": [
+        "用户运营",
+        "内容运营"
+      ],
+      "parentId": null,
+      "tags": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-bytedance",
+      "type": "company_careers",
+      "title": "字节跳动校园招聘",
+      "publisher": "字节跳动",
+      "url": "https://jobs.bytedance.com/campus",
+      "capturedAt": "2026-08-13T12:01:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-jd",
+      "type": "company_careers",
+      "title": "京东校招",
+      "publisher": "京东",
+      "url": "https://campus.jd.com/",
+      "capturedAt": "2026-08-13T12:02:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-meituan",
+      "type": "company_careers",
+      "title": "美团校园招聘",
+      "publisher": "美团",
+      "url": "https://zhaopin.meituan.com/web/campus",
+      "capturedAt": "2026-08-13T12:03:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-kuaishou",
+      "type": "company_careers",
+      "title": "快手校招",
+      "publisher": "快手",
+      "url": "https://campus.kuaishou.cn/",
+      "capturedAt": "2026-08-13T12:04:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    },
+    {
+      "id": "src-ctrip",
+      "type": "company_careers",
+      "title": "携程校园招聘",
+      "publisher": "携程集团",
+      "url": "https://campus.ctrip.com/",
+      "capturedAt": "2026-08-13T12:11:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "usagePolicy": "link_only",
+      "licenseNote": "仅引用入口和人工核验事实，不复制完整职位说明。",
+      "tags": []
+    }
+  ],
+  "recruitmentEntrances": [
+    {
+      "id": "ent-bytedance",
+      "companyId": "bytedance",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://jobs.bytedance.com/campus",
+      "sourceIds": [
+        "src-bytedance"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:01:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-jd",
+      "companyId": "jd",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://campus.jd.com/",
+      "sourceIds": [
+        "src-jd"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:02:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-meituan",
+      "companyId": "meituan",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://zhaopin.meituan.com/web/campus",
+      "sourceIds": [
+        "src-meituan"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:03:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-kuaishou",
+      "companyId": "kuaishou",
+      "label": "实习/校招入口",
+      "recruitmentType": "campus",
+      "url": "https://campus.kuaishou.cn/",
+      "sourceIds": [
+        "src-kuaishou"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:04:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    },
+    {
+      "id": "ent-ctrip",
+      "companyId": "ctrip",
+      "label": "实习/校招入口",
+      "recruitmentType": "internship",
+      "url": "https://campus.ctrip.com/",
+      "sourceIds": [
+        "src-ctrip"
+      ],
+      "status": "unknown",
+      "capturedAt": "2026-08-13T12:11:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "tags": []
+    }
+  ],
+  "records": [
+    {
+      "id": "pool-bytedance-product-operations",
+      "companyId": "bytedance",
+      "roleFamilyId": "product-operations",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-bytedance"
+      ],
+      "sourceIds": [
+        "src-bytedance"
+      ],
+      "capturedAt": "2026-08-13T12:01:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-jd-product-operations",
+      "companyId": "jd",
+      "roleFamilyId": "product-operations",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-jd"
+      ],
+      "sourceIds": [
+        "src-jd"
+      ],
+      "capturedAt": "2026-08-13T12:02:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-meituan-product-operations",
+      "companyId": "meituan",
+      "roleFamilyId": "product-operations",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-meituan"
+      ],
+      "sourceIds": [
+        "src-meituan"
+      ],
+      "capturedAt": "2026-08-13T12:03:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-kuaishou-product-operations",
+      "companyId": "kuaishou",
+      "roleFamilyId": "product-operations",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "campus",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-kuaishou"
+      ],
+      "sourceIds": [
+        "src-kuaishou"
+      ],
+      "capturedAt": "2026-08-13T12:04:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    },
+    {
+      "id": "pool-ctrip-product-operations",
+      "companyId": "ctrip",
+      "roleFamilyId": "product-operations",
+      "roleName": null,
+      "locations": [],
+      "recruitmentType": "internship",
+      "status": "target_pool",
+      "entranceIds": [
+        "ent-ctrip"
+      ],
+      "sourceIds": [
+        "src-ctrip"
+      ],
+      "capturedAt": "2026-08-13T12:11:00.000Z",
+      "verifiedAt": "2026-08-13",
+      "expiresAt": "2026-08-20",
+      "evidenceRequirements": [
+        "申请前核验具体岗位名称、地点和毕业时间要求"
+      ],
+      "advisorNotes": [],
+      "tags": [],
+      "review": {
+        "status": "reviewed",
+        "reviewedBy": "m5-03-research",
+        "reviewedAt": "2026-08-14T00:00:00.000Z"
+      }
+    }
+  ]
+}
