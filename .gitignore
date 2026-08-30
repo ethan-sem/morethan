@@ -4,7 +4,10 @@ node_modules/
 dist/
 tmp/
 output/
-outputs/
+outputs/*
+!outputs/career-copilot/
+outputs/career-copilot/*
+!outputs/career-copilot/m7-06-dependency-audit.json
 work/
 
 # Local environment values and logs. Keep the public template only.

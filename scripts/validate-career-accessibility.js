@@ -40,10 +40,8 @@ for (const file of walk(sourceRoot)) {
 
 const css = readFileSync(cssPath, "utf8");
 const factsGoals = readFileSync(join(sourceRoot, "screens", "FactsGoalsScreens.jsx"), "utf8");
-const actionSettings = readFileSync(join(sourceRoot, "screens", "ActionSettingsScreens.jsx"), "utf8");
 const factReview = readFileSync(join(sourceRoot, "components", "FactReviewWorkspace.jsx"), "utf8");
 requireToken("src/career-copilot/screens/FactsGoalsScreens.jsx", factsGoals, 'aria-describedby={jdError ? "copilot-jd-error" : undefined}', "A11Y_JD_ERROR_RELATION_MISSING");
-requireToken("src/career-copilot/screens/ActionSettingsScreens.jsx", actionSettings, 'aria-describedby={error ? "copilot-byok-error" : undefined}', "A11Y_BYOK_ERROR_RELATION_MISSING");
 requireToken("src/career-copilot/components/FactReviewWorkspace.jsx", factReview, "aria-describedby={error ? errorId : undefined}", "A11Y_FACT_ERROR_RELATION_MISSING");
 requireToken("src/career-copilot.css", css, ":focus-visible", "A11Y_FOCUS_VISIBLE_RULE_MISSING");
 requireToken("src/career-copilot.css", css, ".copilot-upload-zone:focus-within", "A11Y_UPLOAD_FOCUS_RULE_MISSING");

@@ -7,6 +7,7 @@ describe("site hash routing", () => {
   it("falls back to home for unknown or stale hashes", () => {
     expect(resolveSitePage("unknown-route", options)).toBe("home");
     expect(resolveSitePage("service-removed", options)).toBe("home");
+    expect(resolveSitePage("game", options)).toBe("home");
   });
 
   it("keeps known pages and controlled service detail routes", () => {
@@ -16,5 +17,10 @@ describe("site hash routing", () => {
 
   it("returns home when the assistant feature is disabled", () => {
     expect(resolveSitePage("career-copilot", { ...options, careerCopilotEnabled: false })).toBe("home");
+  });
+
+  it("keeps hidden page implementations unavailable from public hashes", () => {
+    const hiddenPageIds = ["career-copilot"];
+    expect(resolveSitePage("career-copilot", { ...options, hiddenPageIds })).toBe("home");
   });
 });

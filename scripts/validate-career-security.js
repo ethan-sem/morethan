@@ -55,16 +55,8 @@ function validateSource() {
     const fileRel = rel(file);
     if (!isApplicationSource(fileRel)) continue;
     const source = readFileSync(file, "utf8");
-    const ignored = fileRel === "public/game/app.js" ? new Set(["DANGEROUS_INNER_HTML"]) : new Set();
-    scanDangerous(fileRel, source, ignored);
+    scanDangerous(fileRel, source);
     if (/\bconsole\.(?:log|info|warn|error|debug)\s*\(/u.test(source)) fail("LOG_USER_DATA_RISK", fileRel);
-  }
-
-  const gamePath = join(root, "public", "game", "app.js");
-  const gameRel = rel(gamePath);
-  const gameSource = readFileSync(gamePath, "utf8");
-  for (const pattern of [/\b(?:input|textarea|contenteditable)\b/iu, /\b(?:fetch|XMLHttpRequest|WebSocket|EventSource)\b/u, /(?:localStorage|sessionStorage|indexedDB|document\.cookie)/u]) {
-    if (pattern.test(gameSource)) fail("REVIEWED_GAME_EXCEPTION_BOUNDARY_CHANGED", gameRel);
   }
 
   validateNetworkAndStorage();

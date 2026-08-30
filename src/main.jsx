@@ -29,6 +29,7 @@ if (new URLSearchParams(window.location.search).has("security-lab")) {
 }
 import { CareerCopilotRoute } from "./CareerCopilotRoute.jsx";
 import { careerCopilotFeatures } from "./career-copilot/config.js";
+import { cases } from "./caseData.js";
 import { resolveSitePage } from "./siteRouting.js";
 
 document.documentElement.dataset.careerCopilotEnabled = String(careerCopilotFeatures.enabled);
@@ -38,9 +39,10 @@ const navItems = [
   { id: "services", label: "服务方案" },
   { id: "proof", label: "学员案例" },
   { id: "community", label: "求职社群" },
-  { id: "game", label: "求职生存模拟器" },
   { id: "about", label: "关于我们" },
 ];
+
+const hiddenPublicPageIds = Object.freeze(["career-copilot"]);
 
 const services = [
   { no: "01", name: "启航计划", title: "校招陪跑", desc: "面向应届生，建立完整而清晰的校招路径" },
@@ -68,12 +70,12 @@ const internshipJourney = [
 ];
 
 const campusJourney = [
-  { id: "campus-diagnosis", no: "01", en: "ASSESSMENT", title: "完成校招五维诊断", text: "从学历、专业、实习、项目与技能五个维度分析优势和差距，确定当届校招中真实可行的起点。", tags: ["五维分析", "竞争力判断", "目标校准"], icon: ScanSearch },
+  { id: "campus-diagnosis", no: "01", en: "ASSESSMENT", title: "完成求职背景诊断", text: "从学历、专业、实习、项目与技能五个维度分析优势和差距，确定当届校招中真实可行的起点。", tags: ["五维分析", "竞争力判断", "目标校准"], icon: ScanSearch },
   { id: "campus-positioning", no: "02", en: "STRATEGY", title: "制定完整校招战略", text: "确定主投方向、后备方向、目标企业清单、合理薪资区间与网申节奏，形成完整校招作战方案。", tags: ["方向定位", "企业清单", "校招排期"], icon: MapPin },
-  { id: "campus-upgrade", no: "03", en: "CALIBRATION", title: "完成导师与HR双重校准", text: "结合校招规划完成背景与简历准备，由求职导师和HR视角共同评估，确保简历达到校招筛选标准。", tags: ["背景补强", "简历精修", "HR评估"], icon: FileCheck2 },
+  { id: "campus-upgrade", no: "03", en: "CALIBRATION", title: "大厂导师与HR辅导", lineTitle: "大厂导师与HR全程陪跑", text: "结合校招规划完成背景与简历准备，由求职导师和HR视角共同评估，确保简历达到校招筛选标准。", tags: ["背景补强", "简历精修", "HR评估"], icon: FileCheck2 },
   { id: "campus-delivery", no: "04", en: "CAMPAIGN", title: "管理网申与笔试节奏", text: "覆盖网申、笔试、投递与招聘节点管理，持续同步校招进度、内推资源和当年真题资料。", tags: ["网申排期", "笔试真题", "投递管理"], icon: ArrowUpRight },
   { id: "campus-interview", no: "05", en: "INTERVIEW", title: "覆盖全场景校招面试", text: "针对群面、Case面、业务面、HR面与加签面开展专项辅导和模拟复盘，系统应对多轮筛选。", tags: ["全场景面试", "1v1模拟", "多轮复盘"], icon: MessageCircleMore },
-  { id: "campus-decision", no: "06", en: "SIGNING", title: "完成谈薪、签约与offer决策", text: "从薪资、成长、团队与行业前景等维度评估offer，并提供谈薪、三方签约和违约风险建议。", tags: ["多维评估", "谈薪指导", "签约决策"], icon: Target },
+  { id: "campus-decision", no: "06", en: "SIGNING", title: "完成谈薪、签约\n与offer决策", lineTitle: "完成谈薪、签约\n与offer决策", text: "从薪资、成长、团队与行业前景等维度评估offer，并提供谈薪、三方签约和违约风险建议。", tags: ["多维评估", "谈薪指导", "签约决策"], icon: Target },
 ];
 
 const escortComparison = [
@@ -84,19 +86,13 @@ const escortComparison = [
   ["服务周期", "从报名持续至成功入职实习后一周", "从报名持续至获得offer，并覆盖谈薪与签约阶段"],
 ];
 
-const cases = [
-  { company: "美团", role: "测试开发实习", profile: "双非大一", result: "3 天入职", track: "研发" },
-  { company: "美团", role: "产品运营实习", profile: "商科转型", result: "获得转正机会", track: "互联网" },
-  { company: "京东", role: "采销校招 offer", profile: "211 本科", result: "高薪运营岗", track: "校招" },
-  { company: "AI 科技", role: "算法 offer", profile: "双 C9 硕", result: "重做求职策略", track: "技术" },
-];
-
 const members = [
   ["Ethan", "主管合伙人", "互联网 / 商科", "./assets/team-ethan.jpg", "曾供职于多家互联网中大厂，具备多段商科及互联网行业工作经验，拥有多年求职培训服务经验，尤其擅长互联网行业求职服务。"],
   ["Alex", "互联网团队负责人", "BAT 核心业务线", "./assets/team-alex.jpg", "2019年校招加入BAT，并在核心业务线持续工作至今，在互联网实习、校招及社招求职领域具备丰富经验。"],
   ["William", "商科团队负责人", "金融 / 财会", "./assets/team-william.jpg", "曾供职于银行、事务所、券商等多家金融机构，在金融、财会等财经领域拥有丰富的求职服务执行经验。"],
   ["Mia", "技术团队负责人", "大模型 / 算法", "./assets/team-mia.jpg", "持有清华大学博士学位，毕业后校招进入头部互联网大厂从事大模型算法工作，目前负责团队各方向技术岗位求职服务。"],
   ["Lucas", "国央企团队负责人", "国央企求职", "./assets/team-lucas.jpg", "毕业后持续任职于国企，具备丰富的国央企求职支持经验，在团队中专注于国央企相关求职服务。"],
+  ["木木", "互联网-产品团队", "斩获美团北斗计划等顶级offer", "./assets/team-mumu.webp", "曾供职于美团、腾讯、字节等大厂，具备多年产品经理正职工作与求职辅导经验。秋招曾收获美团北斗计划、字节sp、腾讯ssp、拼多多管培、快手、虾皮等顶级offer。"],
 ];
 
 const values = [
@@ -113,7 +109,7 @@ const serviceCatalog = [
     id: "resume",
     no: "01",
     title: "简历修改",
-    subtitle: "让真实经历，被准确看见",
+    subtitle: "让真实经历被准确看见",
     summary: "专业导师围绕目标行业、岗位与JD逐字精修，重构经历表达、量化成果，并对齐招聘筛选标准。",
     directorySummary: ["专业导师围绕目标行业、岗位与JD逐字精修，", "重构经历表达、量化成果，并对齐招聘筛选标准。"],
     audience: ["简历投递后面邀较少", "不知道经历应该如何表达", "希望针对目标岗位深度优化"],
@@ -128,8 +124,8 @@ const serviceCatalog = [
     subtitle: "大厂导师在线答疑解惑",
     summary: "围绕职业规划、行业认知、岗位选择与offer决策开展一对一深度咨询，提供针对个人情况的求职策略与答疑。",
     directorySummary: ["围绕职业规划、行业认知、岗位选择与offer决策开展一对一深度咨询，", "提供针对个人情况的求职策略与答疑。"],
-    audience: ["不确定应该选择什么行业", "不清楚适合投递哪些岗位", "面对多个offer难以做决定"],
-    features: ["一对一专属沟通", "个人情况与问题全面拆解", "高密度求职信息", "后续沟通与进一步答疑"],
+    audience: ["不确定应该选择什么行业", "不清楚适合投递哪些岗位", "面对多个offer难以做决定", "更多求职路上的困惑疑问"],
+    features: ["一对一专属沟通", "问题全面拆解", "高密度求职信息", "后续沟通与进一步答疑"],
     process: ["详细描述问题与个人情况", "服务团队进行前置分析", "与专业导师一对一沟通答疑", "形成下一步行动建议并继续答疑"],
     deliverables: ["问题分析与判断依据", "针对个人情况的求职建议", "关键选择的比较框架", "下一步行动方向"],
   },
@@ -137,11 +133,11 @@ const serviceCatalog = [
     id: "interview",
     no: "03",
     title: "面试辅导",
-    subtitle: "在真实面试到来前，完成针对性演练",
+    subtitle: "在真实面试到来前完成针对性演练",
     summary: "基于目标岗位JD与个人简历定制模拟面试，通过真人演练、深度追问与系统复盘，提升面试表达与应对能力。",
     directorySummary: ["基于目标岗位JD与个人简历定制模拟面试，", "通过真人演练、深度追问与系统复盘，提升面试表达与应对能力。"],
     audience: ["面试经验不足、容易紧张", "各轮面试通过率较低", "希望冲击更高质量offer"],
-    features: ["基于岗位JD定制问题", "压力面、情景面与简历深挖", "从回答、语气和状态多维复盘", "面试录屏与后续答疑"],
+    features: ["基于岗位JD定制问题", "压力面、情景面\n与简历深挖", "从回答、语气和状态\n多维复盘", "面试录屏与后续答疑"],
     process: ["提交目标岗位、JD与简历", "导师准备定制模拟面试", "完成真人模拟、点评与优化", "复盘问题并进行后续答疑"],
     deliverables: ["定制面试问题清单", "真人模拟面试", "逐题点评与改进建议", "面试录屏与复盘资料"],
   },
@@ -149,20 +145,20 @@ const serviceCatalog = [
     id: "background",
     no: "04",
     title: "背景提升",
-    subtitle: "内容筹备中",
-    summary: "该服务页面正在整理，暂不展示未经确认的服务内容。",
-    directorySummary: ["该服务页面正在整理，", "暂不展示未经确认的服务内容。"],
+    subtitle: "高效补齐背景，提升竞争力",
+    summary: "大厂导师1v1带教，在真实项目过程中助力学员提升竞争力，极限提升背景",
+    directorySummary: ["大厂导师真实项目带教。", "助力学员高效完善简历、补齐背景"],
     placeholder: true,
   },
   {
     id: "internship",
     no: "05",
-    title: "实习陪跑",
+    title: "精英实习陪跑营",
     subtitle: "从0到1的实习一站式解决方案",
     summary: "面向需要寻找实习的非应届本科、硕士与博士生，围绕求职规划、简历、投递、面试与offer选择提供全流程陪跑。",
     directorySummary: ["面向需要寻找实习的非应届本科、硕士与博士生，", "围绕求职规划、简历、投递、面试与offer选择提供全流程陪跑。"],
     audience: ["希望获得第一段高质量实习", "需要用垂直经历为校招建立优势", "求职方向模糊或缺乏有效节奏"],
-    features: ["专属导师团队全程陪跑", "定制投递规划与背景分析", "简历优化与模拟面试", "内推机会、答疑与offer管理"],
+    features: ["专属导师团队全程陪跑", "定制投递规划", "简历优化与模拟面试", "内推机会、答疑\n与offer管理"],
     process: ["充分沟通个人情况与目标", "制定实习定位与投递规划", "完成简历、投递与面试准备", "持续复盘进展并管理offer选择"],
     deliverables: ["个人实习求职规划", "针对性简历优化", "投递指导与内推信息", "模拟面试、答疑与offer建议"],
     journeyTitle: <>从第一段高质量实习开始，<br />建立背景、经验与认知优势</>,
@@ -171,12 +167,12 @@ const serviceCatalog = [
   {
     id: "campus",
     no: "06",
-    title: "校招陪跑",
+    title: "精英校招陪跑营",
     subtitle: "从0到1的校招一站式解决方案",
     summary: "面向海内外应届本科、硕士与博士生，从校招定位、背景与简历准备，到投递、笔面试、谈薪及签约进行全周期陪跑。",
     directorySummary: ["面向海内外应届本科、硕士与博士生，", "从校招定位、背景与简历准备，到投递、笔面试、谈薪及签约进行全周期陪跑。"],
     audience: ["即将参加校招的海内外应届生", "需要系统规划投递方向与目标企业", "希望获得全周期支持并提升offer质量"],
-    features: ["多导师协同的专属陪跑团队", "定制校招定位与目标企业清单", "简历、笔试与全场景面试辅导", "投递管理、谈薪与签约指导"],
+    features: ["多导师协同的\n专属陪跑团队", "定制校招定位\n与目标企业清单", "简历、笔试与\n全场景面试辅导", "投递管理、谈薪\n与签约指导"],
     process: ["分析学历、专业、实习、项目与技能", "制定主投方向、企业清单与时间安排", "完成简历、笔试、投递与面试准备", "持续陪跑至offer比较、谈薪与签约"],
     deliverables: ["完整校招规划方案", "简历与竞争力评估", "笔面试辅导与投递管理", "offer评估、谈薪及签约建议"],
     journeyTitle: <>从校招定位到签约选择，<br />走好每一个关键阶段</>,
@@ -185,12 +181,14 @@ const serviceCatalog = [
   {
     id: "solution",
     no: "07",
-    title: "求职解决方案",
+    title: "顶尖名企计划",
+    directoryTitle: "求职陪跑方案定制",
+    titleNote: "——1v1定制求职解决方案",
     subtitle: "充分结合个人背景的一对一定制",
-    summary: "如您希望充分结合个人背景，规划包括背景提升、实习陪跑、校招陪跑在内的长周期求职解决方案，我们可以为您1v1定制求职解决方案。",
-    directorySummary: ["如您希望充分结合个人背景，规划包括背景提升、实习陪跑、", "校招陪跑在内的长周期求职解决方案，我们可以为您1v1定制求职解决方案。"],
+    summary: "如您希望结合个人情况，规划包括背景提升、实习陪跑、校招陪跑在内的长周期求职解决方案，我们支持1v1定制求职陪跑方案。",
+    directorySummary: ["如您希望结合个人情况，规划包括背景提升、实习陪跑、校招陪跑", "在内的长周期求职解决方案，我们支持1v1定制求职陪跑方案。"],
     audience: ["需要规划长周期求职路径", "希望组合多项服务解决复杂问题", "需要根据个人背景定制服务重点"],
-    features: ["个人背景与长期目标诊断", "服务模块按实际需要组合", "阶段目标、节奏与重点动态调整", "由专属导师持续跟进"],
+    features: ["个人背景与长期规划", "按实际需要\n灵活设计陪跑方案", "阶段目标、节奏与\n重点动态调整", "由专属导师持续跟进"],
     process: ["一对一沟通个人背景与目标", "识别关键差距与服务优先级", "制定长周期组合服务方案", "按阶段执行、复盘并动态调整"],
     deliverables: ["个人求职问题诊断", "长周期求职路径", "定制服务组合与阶段目标", "持续复盘和调整建议"],
   },
@@ -216,7 +214,7 @@ const homeSlides = [
   {
     id: "about",
     eyebrow: "03 / TEAM",
-    title: "全方向、多领域的专业导师\n立足一线的服务团队",
+    title: "多领域的专业导师\n立足一线的服务团队",
     text: "由互联网、商科、技术与国央企方向的专业人士组成，以持续更新的经验回应真实求职市场。",
     action: "认识团队",
     visual: "team",
@@ -232,13 +230,21 @@ const homeSlides = [
 ];
 
 function isKnownPage(page) {
-  return resolveSitePage(page, { careerCopilotEnabled: true, serviceIds: serviceCatalog.map((service) => service.id) }) === page;
+  return resolveSitePage(page, {
+    careerCopilotEnabled: true,
+    hiddenPageIds: hiddenPublicPageIds,
+    serviceIds: serviceCatalog.map((service) => service.id),
+  }) === page;
 }
 
 function App() {
   const resolvePage = () => {
     const requested = window.location.hash.replace("#", "") || "home";
-    return resolveSitePage(requested, { careerCopilotEnabled: careerCopilotFeatures.enabled, serviceIds: serviceCatalog.map((service) => service.id) });
+    return resolveSitePage(requested, {
+      careerCopilotEnabled: careerCopilotFeatures.enabled,
+      hiddenPageIds: hiddenPublicPageIds,
+      serviceIds: serviceCatalog.map((service) => service.id),
+    });
   };
   const [activePage, setActivePage] = useState(resolvePage);
   const [introActive, setIntroActive] = useState(() => !window.location.hash || window.location.hash === "#home");
@@ -301,11 +307,14 @@ function App() {
 
   useEffect(() => {
     const items = document.querySelectorAll(".reveal");
+    const caseItems = document.querySelectorAll(".case-item");
     items.forEach((item) => item.classList.remove("is-visible"));
+    caseItems.forEach((item) => item.classList.remove("is-visible"));
     window.scrollTo({ top: 0, behavior: "auto" });
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       items.forEach((item) => item.classList.add("is-visible"));
+      caseItems.forEach((item) => item.classList.add("is-visible"));
       return undefined;
     }
     const observer = new IntersectionObserver(
@@ -315,10 +324,23 @@ function App() {
           observer.unobserve(entry.target);
         }
       }),
-      { threshold: 0.18 },
+      { threshold: 0.01 },
+    );
+    const caseObserver = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          caseObserver.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
     );
     items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+    caseItems.forEach((item) => caseObserver.observe(item));
+    return () => {
+      observer.disconnect();
+      caseObserver.disconnect();
+    };
   }, [activePage]);
 
   return (
@@ -332,7 +354,11 @@ function App() {
           <div className="intro-curtain" />
         </div>
       )}
-      <Header activePage={activePage} navigate={navigate} navItems={navItems.filter((item) => item.id !== "career-copilot" || careerCopilotFeatures.enabled)} />
+      <Header
+        activePage={activePage}
+        navigate={navigate}
+        navItems={navItems.filter((item) => !hiddenPublicPageIds.includes(item.id) && (item.id !== "career-copilot" || careerCopilotFeatures.enabled))}
+      />
 
       <section id="home" key={`home-${homeVisit}`} className="hero reveal site-page page-home">
         <img className="hero-art" src="./assets/morethan-career-path-hero-v2.webp" width="1672" height="941" fetchPriority="high" alt="从诊断、简历到 offer 的求职成长路径" />
@@ -343,7 +369,7 @@ function App() {
               <span className="title-mask"><span>让每一步求职，</span></span>
               <span className="title-mask"><span>都有清晰方向</span></span>
             </h1>
-            <p className="lead">面向实习与校招，以专业、可信的服务，陪伴每一位学员走好长期求职之路。</p>
+            <p className="lead">一站式求职服务工作室 | 求职解决方案</p>
             <div className="actions">
               <button className="button primary" onClick={() => navigate("services")}>了解服务 <ArrowRight size={17} /></button>
               <button className="button text-button" onClick={() => navigate("proof")}>查看学员案例 <ArrowRight size={17} /></button>
@@ -370,15 +396,14 @@ function App() {
 
       <section id="proof" className="section dark-section reveal site-page page-proof">
         <div className="shell">
-          <SectionHead title="每一种结果，都有成长作为证据" light singleLine />
+          <SectionHead title="每一种成长，都有结果作为证据" light singleLine />
           <div className="case-grid">
             {cases.map((item, index) => (
-              <article key={item.role} className="case-item">
-                <div><span>{String(index + 1).padStart(2, "0")}</span><small>{item.track}</small></div>
+              <article key={`${item.company}-${item.role}`} className="case-item" style={{ "--case-delay": `${(index % 4) * 70}ms` }}>
+                <div><small>{item.industry}</small></div>
                 <strong>{item.company}</strong>
                 <h3>{item.role}</h3>
                 <p>{item.profile}</p>
-                <b>{item.result}</b>
               </article>
             ))}
           </div>
@@ -408,8 +433,6 @@ function App() {
         </div>
       </section>
 
-      {activePage === "game" && <CareerGamePage />}
-
         <section id="about" className="section about-section reveal site-page page-about">
           <div className="shell">
             <div className="about-profile">
@@ -418,7 +441,7 @@ function App() {
                 <h2>一家行业领先的<br />教育咨询服务机构</h2>
               </div>
               <div className="about-profile-copy">
-                <p>MoreThan求职是一家行业领先的教育咨询服务机构。自成立以来深度服务24-27届共计1000+名学生，为广泛的非应届生、应届生及职场中期转型人士提供包括求职辅导、背景提升、求职内推及全流程求职陪跑在内的一系列求职咨询服务。</p>
+                <p>MoreThan求职是一家行业领先的教育咨询服务机构。自成立以来深度服务24-27届共计1000+名学生，为广泛的非应届生、应届生及职场中期转型人士提供包括求职辅导、背景提升、求职内推及全流程求职陪跑在内的一系列求职服务。</p>
                 <p>如今，我们已成长为一站式综合性求职服务方案提供商。</p>
               </div>
             </div>
@@ -434,7 +457,7 @@ function App() {
                   const position = offset === 0 ? "is-active" : offset === 1 ? "is-next" : offset === members.length - 1 ? "is-prev" : "is-hidden";
                   return (
                     <article className={`team-card ${position} member-${name.toLowerCase()}`} key={name} aria-hidden={offset !== 0}>
-                      <div className="team-portrait"><img src={image} alt={`${name}导师肖像`} /></div>
+                      <div className="team-portrait"><img src={offset <= 1 || offset === members.length - 1 ? image : undefined} data-src={image} loading={offset === 0 ? "eager" : "lazy"} decoding="async" fetchPriority={offset === 0 ? "high" : "auto"} alt={`${name}导师肖像`} /></div>
                       <div className="team-card-copy">
                         <span>0{index + 1} / TEAM</span>
                         <h3>{name}</h3>
@@ -479,55 +502,16 @@ function App() {
           <div>
             <p className="kicker light-kicker">START WITH CLARITY</p>
             <h2>先看清问题，<br />再走好下一步。</h2>
-            <p>添加微信，从方向定位、简历短板识别开始，获得下一阶段更清晰的行动建议。</p>
-            <div className="contact-points">
-              <span><b>01</b>方向定位</span><span><b>02</b>短板识别</span><span><b>03</b>行动规划</span>
-            </div>
+            <p>添加求职小助手，领取免费求职福利。</p>
           </div>
           <div className="qr-panel">
-            <div className="qr-placeholder">QR</div>
-            <strong>MoreThan 求职顾问</strong>
-            <span>真实二维码待替换</span>
+            <img className="qr-image" src="./assets/contact-wechat-qr.jpg" alt="MoreThan求职小助手微信二维码" />
+            <strong>MoreThan 求职小助手</strong>
+            <span>微信扫码添加好友</span>
           </div>
         </div>
       </section>
     </main>
-  );
-}
-
-function CareerGamePage() {
-  return (
-    <section id="game" className="site-page page-game game-page">
-      <div className="shell game-page-intro">
-        <div>
-          <p className="kicker">MORETHAN CAREER LAB</p>
-          <h1>《活到秋招》</h1>
-        </div>
-        <div className="game-page-copy">
-          <strong>求职生存模拟器</strong>
-          <p>用 12—16 次决策走完八个求职阶段。每一局都会根据角色、属性、历史选择和随机种子匹配不同故事。</p>
-          <div className="game-page-meta" aria-label="游戏信息">
-            <span>单局约 8—12 分钟</span>
-            <span>无需登录</span>
-            <span>不保存个人信息</span>
-          </div>
-        </div>
-      </div>
-      <div className="shell game-embed-shell">
-        <div className="game-embed-toolbar">
-          <div><b>MoreThan求职</b><span> / 《活到秋招》</span></div>
-          <a href="./game/index.html" target="_blank" rel="noopener noreferrer">
-            在新窗口打开 <ArrowUpRight size={17} />
-          </a>
-        </div>
-        <iframe
-          className="game-embed-frame"
-          src="./game/index.html?embed=1"
-          title="《活到秋招》求职生存模拟器"
-          allow="clipboard-write"
-        />
-      </div>
-    </section>
   );
 }
 
@@ -572,7 +556,7 @@ function ServiceDirectoryItem({ service, navigate }) {
   return (
     <button type="button" onClick={() => navigate(`service-${service.id}`)}>
       <span>{service.no}</span>
-      <strong>{service.title}</strong>
+      <strong>{service.directoryTitle || service.title}</strong>
       <p>{(service.directorySummary || [service.summary]).map((line) => <span key={line}>{line}</span>)}</p>
       <ArrowUpRight size={22} />
     </button>
@@ -587,9 +571,12 @@ function ServiceDetailPage({ service, navigate }) {
         <div className="shell">
           <button className="service-back" type="button" onClick={() => navigate("services")}><ChevronLeft size={18} />服务目录</button>
           <div className="service-detail-title">
-            <div>
+            <div className={["internship", "campus"].includes(service.id) ? "service-title-raised" : undefined}>
               <p className="kicker">SERVICE {service.no}</p>
-              <h1>{service.title}</h1>
+              <h1 className={["internship", "campus", "solution"].includes(service.id) ? "is-compact-title" : undefined}>
+                {service.title}
+                {service.titleNote && <small>{service.titleNote}</small>}
+              </h1>
             </div>
             <div>
               <strong>{service.subtitle}</strong>
@@ -602,9 +589,8 @@ function ServiceDetailPage({ service, navigate }) {
       {service.placeholder ? (
         <div className="shell placeholder-service">
           <span>04</span>
-          <h2>内容筹备中</h2>
-          <p>该服务的具体内容将在完成确认后更新。</p>
-          <button className="button primary" type="button" onClick={() => navigate("services")}>返回服务目录 <ArrowRight size={17} /></button>
+          <p>背景提升项目需与学员1v1沟通需求与项目。请点击【免费咨询】，与求职小助手联系。</p>
+          <button className="button primary" type="button" onClick={() => navigate("contact")}>免费咨询 <ArrowRight size={17} /></button>
         </div>
       ) : (
         <>
@@ -639,7 +625,7 @@ function EscortComparison({ active }) {
       <div className="shell">
         <div className="comparison-heading">
           <p className="kicker">WHICH PROGRAM</p>
-          <h2>实习陪跑与校招陪跑，<br />有什么不同？</h2>
+          <h2>实习陪跑与校招陪跑<br />有什么不同？</h2>
         </div>
         <div className="comparison-table">
           <div className="comparison-row is-header"><span aria-hidden="true" /><strong {...columnProps("internship")}>实习陪跑</strong><strong {...columnProps("campus")}>校招陪跑</strong></div>
@@ -664,7 +650,7 @@ function ServiceJourney({ service }) {
           <p className="kicker">THE MORETHAN METHOD</p>
           <h2>{service.journeyTitle}</h2>
           <div className="process-line">
-            {service.journey.map((stage) => <span key={stage.id}><b>{stage.no}</b>{stage.title}</span>)}
+            {service.journey.map((stage) => <span key={stage.id}><b>{stage.no}</b>{stage.lineTitle || stage.title}</span>)}
           </div>
         </div>
       </div>
@@ -758,13 +744,13 @@ function OverviewVisual({ type }) {
     return <div className="overview-visual results-visual"><span>100+</span><strong>OFFER</strong><div><b>500+</b> 服务学员</div><div><b>1000+</b> 深度服务</div></div>;
   }
   if (type === "team") {
-    return <div className="overview-visual team-visual">{members.map(([name, role]) => <div key={name}><span>{name[0]}</span><p><strong>{name}</strong><small>{role}</small></p></div>)}</div>;
+    return <div className="overview-visual team-visual">{members.slice(0, 4).map(([name, role]) => <div key={name}><span>{name[0]}</span><p><strong>{name}</strong><small>{role}</small></p></div>)}</div>;
   }
   return <div className="overview-visual community-visual"><Users size={34} strokeWidth={1.35} /><div><span>岗位机会</span><span>真题资料</span><span>节点答疑</span><span>同伴交流</span></div></div>;
 }
 
 function LogoMark() {
-  return <img className="logo" src="./assets/morethan-logo-mark.png" alt="" aria-hidden="true" />;
+  return <img className="logo" src="./assets/morethan-logo-mark-transparent.png" alt="" aria-hidden="true" />;
 }
 
 function SectionHead({ title, text, light = false, singleLine = false }) {

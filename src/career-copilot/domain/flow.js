@@ -7,10 +7,11 @@ export const FLOW_STEPS = Object.freeze([
   { id: "generating", label: "生成诊断" },
   { id: "report", label: "诊断报告" },
   { id: "actions", label: "行动计划" },
-  { id: "settings", label: "数据设置" },
 ]);
 
 const STEP_IDS = new Set(FLOW_STEPS.map(({ id }) => id));
+/** @type {Readonly<Record<string, string>>} */
+const LEGACY_STEP_REDIRECTS = Object.freeze({ settings: "actions" });
 
 export const DEFAULT_FLOW_STATE = Object.freeze({
   version: 1,
@@ -34,9 +35,12 @@ export function sanitizeFlowState(value) {
 
   const candidate = /** @type {{ step?: unknown, visited?: unknown }} */ (value);
 
-  const step = isFlowStep(candidate.step) ? candidate.step : "intro";
+  const migratedStep = typeof candidate.step === "string" ? LEGACY_STEP_REDIRECTS[candidate.step] : undefined;
+  const step = isFlowStep(candidate.step) ? candidate.step : migratedStep ?? "intro";
   const visited = Array.isArray(candidate.visited)
-    ? candidate.visited.filter((item, index, items) => isFlowStep(item) && items.indexOf(item) === index)
+    ? candidate.visited
+      .map((item) => typeof item === "string" ? LEGACY_STEP_REDIRECTS[item] ?? item : item)
+      .filter((item, index, items) => isFlowStep(item) && items.indexOf(item) === index)
     : [];
 
   if (!visited.includes("intro")) visited.unshift("intro");

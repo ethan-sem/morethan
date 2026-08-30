@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
-import { ArrowRight, Check, CheckCircle2, CircleAlert, Clipboard, Clock3, ExternalLink, LoaderCircle, Printer, SearchCheck, ShieldCheck, Target } from "lucide-react";
+import { ArrowRight, CheckCircle2, CircleAlert, Clock3, ExternalLink, LoaderCircle, SearchCheck, ShieldCheck, Target } from "lucide-react";
 import { formatFactSummary } from "../domain/factReviewForm.js";
 import { ConclusionSourceBadges, ConclusionSourceLegend, EvidenceFactList } from "../components/ConclusionSourceBadges.jsx";
 import { findEvidenceDegradation } from "../domain/evidenceDegradation.js";
-import { buildPrivacySafeReportText } from "../domain/reportTextExport.js";
-import { createReportDisclosure } from "../domain/reportDisclosure.js";
 
 export function GeneratingScreen({ jdProfile, companyRoleStatus = "loading", onNext }) {
   return (
@@ -26,13 +23,7 @@ export function GeneratingScreen({ jdProfile, companyRoleStatus = "loading", onN
   );
 }
 
-export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, actionPlan, companyRoleRecommendations, companyRoleStatus = "ready", conclusionProvenance, evidenceDegradation, resumeFacts, careerGoals, printingEnabled = true, onExport, onNext, onCorrect }) {
-  const [exportStatus, setExportStatus] = useState("idle");
-  useEffect(() => {
-    if (exportStatus === "idle") return undefined;
-    const timer = window.setTimeout(() => setExportStatus("idle"), 2800);
-    return () => window.clearTimeout(timer);
-  }, [exportStatus]);
+export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, actionPlan, companyRoleRecommendations, companyRoleStatus = "ready", conclusionProvenance, evidenceDegradation, resumeFacts, careerGoals, onNext, onCorrect }) {
   if (!analysis || !resumeFacts) return <ExampleReport onNext={onNext} onCorrect={onCorrect} />;
   const strength = analysis.strengths[0] ?? analysis.insufficient[0] ?? null;
   const gap = [...analysis.gaps, ...analysis.insufficient].find((item) => item.id !== strength?.id && findEvidenceDegradation(evidenceDegradation, item.id)?.outcome !== "omitted") ?? null;
@@ -45,31 +36,8 @@ export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, act
   const headline = analysis.strengths.length > 0
     ? analysis.gaps.length > 0 ? `你的${direction}方向已有可用证据，\n但仍有一项简历证据需要补齐。` : `你的${direction}方向，\n已经形成一组可用证据。`
     : "目前证据还不足，\n先补充事实再判断方向。";
-  const reportTextInput = { analysis, jdGapAnalysis, applicationTierPlan, actionPlan, companyRoleRecommendations, evidenceDegradation };
-  const handleCopy = async () => {
-    try {
-      const reportText = buildPrivacySafeReportText(reportTextInput);
-      if (!navigator.clipboard?.writeText) throw new Error("CLIPBOARD_UNAVAILABLE");
-      await navigator.clipboard.writeText(reportText);
-      onExport?.();
-      setExportStatus("copied");
-    } catch {
-      setExportStatus("copy_failed");
-    }
-  };
-  const handlePrint = () => {
-    if (!printingEnabled || typeof window.print !== "function") return;
-    setExportStatus("printing");
-    window.print();
-  };
-
   return (
     <div className="copilot-report-screen" data-report-document="career-copilot">
-      <div className="copilot-report-export no-print" aria-label="报告导出工具">
-        <div><strong>保存本次报告</strong><small>复制内容与打印版均默认脱敏，不包含姓名、联系方式或完整简历原文。</small></div>
-        <div><button type="button" className="copilot-secondary" onClick={handleCopy}>{exportStatus === "copied" ? <Check size={16} /> : <Clipboard size={16} />}{exportStatus === "copied" ? "已复制" : "复制脱敏文本"}</button>{printingEnabled && <button type="button" className="copilot-secondary" onClick={handlePrint}><Printer size={16} />打印 / 保存 PDF</button>}</div>
-      </div>
-      <p className={`copilot-export-status no-print is-${exportStatus}`} role="status" aria-live="polite">{exportStatus === "copied" ? "脱敏报告已复制到剪贴板。" : exportStatus === "copy_failed" ? "复制失败，请检查浏览器剪贴板权限后重试。" : exportStatus === "printing" ? "正在打开浏览器打印窗口；可选择“保存为 PDF”。" : ""}</p>
       <header className="copilot-print-only copilot-print-header"><strong>MoreThan 智能求职助手</strong><span>实习 / 校招脱敏诊断报告</span></header>
       <div className="copilot-report-head">
         <div><p className="copilot-eyebrow">30-SECOND DIAGNOSIS</p><h1>{headline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</h1></div>
@@ -90,7 +58,6 @@ export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, act
       {companyRoleRecommendations ? <CompanyRoleTargets recommendations={companyRoleRecommendations} /> : companyRoleStatus !== "idle" && <CompanyRoleLoadState status={companyRoleStatus} />}
       {actionPlan && <ActionPlanSummary actionPlan={actionPlan} facts={facts} conclusionProvenance={conclusionProvenance} onNext={onNext} />}
       <div className="copilot-report-actions no-print"><button type="button" className="copilot-secondary" onClick={onCorrect}>纠正事实</button><button type="button" className="copilot-primary" onClick={onNext}>查看行动计划 <ArrowRight size={17} /></button></div>
-      <ReportDisclaimer analysis={analysis} companyRoleRecommendations={companyRoleRecommendations} />
       <footer className="copilot-print-only copilot-print-footer">MoreThan · 本报告仅供求职规划参考 · 申请前请核验公司官方招聘信息</footer>
     </div>
   );
@@ -191,23 +158,6 @@ function ActionPlanSummary({ actionPlan, facts, conclusionProvenance, onNext }) 
         return <article key={window}><header><Clock3 size={17} /><div><span>{label}</span><small>{description}</small></div><b>{items.length} 项</b></header>{items.length ? <ol>{items.map((item) => <li key={item.id}><div><ConclusionSourceBadges provenance={conclusionProvenance} targetType="action_item" targetId={item.id} facts={facts} /><strong>{item.title}</strong><small>产出物：{item.deliverable} · {item.estimatedMinutes} 分钟</small></div></li>)}</ol> : <p>当前窗口暂无任务。</p>}</article>;
       })}</div>
       <div className="copilot-report-action-footer"><p><ShieldCheck size={14} />{actionPlan.disclaimer}</p><button type="button" className="copilot-link" onClick={onNext}>查看完整行动计划 <ArrowRight size={15} /></button></div>
-    </section>
-  );
-}
-
-function ReportDisclaimer({ analysis, companyRoleRecommendations }) {
-  const disclosure = createReportDisclosure({
-    asOfDate: companyRoleRecommendations?.asOfDate,
-    hasCompanyData: Boolean(companyRoleRecommendations?.candidates?.length),
-    companyDataNeedsVerification: companyRoleRecommendations?.status === "needs_verification",
-  });
-  return (
-    <section className="copilot-report-disclosure" aria-labelledby="report-disclosure-title">
-      <div className="copilot-report-disclosure-head"><ShieldCheck size={20} /><div><p className="copilot-eyebrow">TRANSPARENCY</p><h2 id="report-disclosure-title">生成方式与使用边界</h2></div><small>声明版本 {disclosure.version}</small></div>
-      <div className="copilot-report-disclosure-grid">
-        {[disclosure.generation, disclosure.privacy, disclosure.outcome, disclosure.freshness].map((item) => <article key={item.label}><span>{item.label}</span><strong>{item.badge}</strong><p>{item.text}</p></article>)}
-      </div>
-      <p className="copilot-report-disclosure-note">{analysis.disclaimer} {companyRoleRecommendations?.disclaimer ?? "公司与岗位信息可能变化，申请前请通过官方招聘页面核验。"} 公司目标池不代表实时职位。</p>
     </section>
   );
 }

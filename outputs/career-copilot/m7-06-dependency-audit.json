@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditedAt": "2026-08-30T12:10:17.3665244Z",
+  "command": "pnpm audit --prod --json",
+  "status": "passed",
+  "lockfileSha256": "7d3471ed5680ed53e1e7f9d6feeb23067e463ca3f8bcb3dcc7b69daeed66b98c",
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0
+  },
+  "dependencies": {
+    "production": 31,
+    "development": 0,
+    "optional": 12,
+    "total": 43
+  }
+}

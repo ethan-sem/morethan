@@ -7,6 +7,17 @@ vi.mock("./lib/companyRolePoolLoader.js", async () => ({
   loadCompanyRolePoolByDirection: vi.fn(async () => (await import("../../public/data/career-copilot/company-role-pool.json")).default),
 }));
 
+vi.mock("./domain/companyRoleRecommendations.js", async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    createCompanyRoleRecommendations: (pool, options) => actual.createCompanyRoleRecommendations(pool, {
+      ...options,
+      asOfDate: "2026-08-14",
+    }),
+  };
+});
+
 const RESUME_TEXT = [
   "项目经历",
   "校园用户研究项目 | 项目负责人 | 2025.03-2025.06",
@@ -17,8 +28,6 @@ describe("CareerCopilot local profile analysis flow", () => {
   beforeEach(() => {
     window.sessionStorage.clear();
     window.localStorage.clear();
-    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: vi.fn().mockResolvedValue(undefined) } });
-    window.print = vi.fn();
   });
 
   it("turns confirmed facts and the selected direction into a traceable local report", async () => {
@@ -51,7 +60,6 @@ describe("CareerCopilot local profile analysis flow", () => {
     fireEvent.click(screen.getByRole("button", { name: /查看本地分析结果/ }));
     expect(await screen.findByText(/基于 1 条已确认事实/)).toBeInTheDocument();
     expect(screen.getAllByText(/来自已确认事实：校园用户研究项目 · 项目负责人/).length).toBeGreaterThan(0);
-    expect(screen.getByText(/分析仅基于用户已确认且写入简历的事实/)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /方向判断：优先验证/ })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "优势与短板，都回到简历证据" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /核心优势/ })).toBeInTheDocument();
@@ -63,7 +71,6 @@ describe("CareerCopilot local profile analysis flow", () => {
     expect(screen.getByText(/数据核验状态：当前有效/)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /打开官方招聘入口/ })).toHaveLength(5);
     expect(screen.getAllByText("核验日期")).toHaveLength(5);
-    expect(screen.getByText(/公司目标池不代表实时职位/)).toBeInTheDocument();
     expect(screen.getAllByText("已确认事实").length).toBeGreaterThan(0);
     expect(screen.getAllByText("规则推断").length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: "证据不够时，不强行下结论" })).toBeInTheDocument();
@@ -72,37 +79,16 @@ describe("CareerCopilot local profile analysis flow", () => {
     expect(screen.queryByText(/示例内容由本地规则生成/)).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "下一步：按三个时间窗推进" })).toBeInTheDocument();
     expect(screen.getByText(/共 5 项，预计/)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "生成方式与使用边界" })).toBeInTheDocument();
-    expect(screen.getByText("本地规则生成（非生成式 AI）")).toBeInTheDocument();
-    expect(screen.getByText("敏感内容仅驻留当前页面")).toBeInTheDocument();
-    expect(screen.getByText("不构成录用保证")).toBeInTheDocument();
-    expect(screen.getByText(/资料处于复核期内 · 查看日期/)).toBeInTheDocument();
-    expect(screen.getByText(/不代表岗位仍在招聘/)).toBeInTheDocument();
-    expect(screen.getByText(/不代表招聘方评价、真实能力上限、面试邀请、录用概率或 offer 保证/)).toBeInTheDocument();
-    expect(screen.getByText(/本次内容不会自动保存/)).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "生成方式与使用边界" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /复制脱敏文本/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /打印 \/ 保存 PDF/ })).not.toBeInTheDocument();
     const flowStorage = window.sessionStorage.getItem(FLOW_STORAGE_KEY);
     expect(flowStorage).not.toContain(RESUME_TEXT);
     expect(flowStorage).not.toContain("校园用户研究项目");
     expect(window.localStorage.length).toBe(0);
-    const leaveBeforeExport = new Event("beforeunload", { cancelable: true });
-    window.dispatchEvent(leaveBeforeExport);
-    expect(leaveBeforeExport.defaultPrevented).toBe(true);
-    fireEvent.click(screen.getByRole("button", { name: /打印 \/ 保存 PDF/ }));
-    expect(window.print).toHaveBeenCalledTimes(1);
-    const leaveAfterPrintOnly = new Event("beforeunload", { cancelable: true });
-    window.dispatchEvent(leaveAfterPrintOnly);
-    expect(leaveAfterPrintOnly.defaultPrevented).toBe(true);
-    fireEvent.click(screen.getByRole("button", { name: /复制脱敏文本/ }));
-    await waitFor(() => expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1));
-    const copiedText = navigator.clipboard.writeText.mock.calls[0][0];
-    expect(copiedText).toContain("MoreThan 智能求职助手｜脱敏诊断报告");
-    expect(copiedText).toContain("【核心优势】");
-    expect(copiedText).not.toContain(RESUME_TEXT);
-    expect(screen.getByRole("status")).toHaveTextContent("脱敏报告已复制到剪贴板");
-    await waitFor(() => expect(screen.queryByText(/本次内容不会自动保存/)).not.toBeInTheDocument());
-    const leaveAfterExport = new Event("beforeunload", { cancelable: true });
-    window.dispatchEvent(leaveAfterExport);
-    expect(leaveAfterExport.defaultPrevented).toBe(false);
+    const leaveWithReport = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(leaveWithReport);
+    expect(leaveWithReport.defaultPrevented).toBe(true);
     fireEvent.click(screen.getByRole("button", { name: /查看行动计划/ }));
     expect(await screen.findByRole("heading", { name: "把判断变成三个时间窗内的动作" }, { timeout: 5_000 })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "48 小时" })).toBeInTheDocument();
@@ -115,10 +101,9 @@ describe("CareerCopilot local profile analysis flow", () => {
     fireEvent.click(firstCompleteButton);
     expect(firstCompleteButton).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByText("1/5")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /数据与设置/ }));
-    expect(await screen.findByRole("heading", { name: "本次资料，只在当前页面处理" })).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /行动计划/ }));
-    expect(await screen.findByText("1/5")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /数据与设置/ })).not.toBeInTheDocument();
+    expect(screen.queryByText(/YOUR DATA|本次资料，只在当前页面处理/)).not.toBeInTheDocument();
+    expect(screen.getByText("1/5")).toBeInTheDocument();
   }, 20000);
 
   it("extracts an optional JD locally and shows actionable validation errors", async () => {

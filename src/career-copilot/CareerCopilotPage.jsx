@@ -20,10 +20,9 @@ import {
   inferResumeFormatFromName,
   validateResumeFile,
 } from "./parsers/resumeFileValidation.js";
-import { clearCareerCopilotBrowserData, createCareerSessionResourceRegistry } from "./lib/careerSessionCleanup.js";
-import { createByokMemoryVault } from "./privacy/byokMemoryVault.js";
+import { createCareerSessionResourceRegistry } from "./lib/careerSessionCleanup.js";
 
-const FOOTER_HIDDEN_STEPS = new Set(["intro", "report", "actions", "settings"]);
+const FOOTER_HIDDEN_STEPS = new Set(["intro", "report", "actions"]);
 const EMPTY_PARSE_STATE = Object.freeze({ status: "idle", progress: 0, result: null, error: null });
 const EMPTY_COMPANY_ROLE_STATE = Object.freeze({ status: "idle", recommendations: null });
 const EMPTY_RECOMMENDATION_EXCLUSIONS = Object.freeze({ companies: "", locations: "", industries: "" });
@@ -33,7 +32,6 @@ const QuestionsScreen = lazyNamed(() => import("./screens/FactsGoalsScreens.jsx"
 const GeneratingScreen = lazyNamed(() => import("./screens/AnalysisScreens.jsx"), "GeneratingScreen");
 const ReportScreen = lazyNamed(() => import("./screens/AnalysisScreens.jsx"), "ReportScreen");
 const ActionsScreen = lazyNamed(() => import("./screens/ActionSettingsScreens.jsx"), "ActionsScreen");
-const SettingsScreen = lazyNamed(() => import("./screens/ActionSettingsScreens.jsx"), "SettingsScreen");
 const loadAnalysisPipeline = () => import("./domain/analysisPipeline.js");
 
 export function CareerCopilotPage({ navigate, registerLeaveGuard }) {
@@ -45,7 +43,7 @@ export function CareerCopilotPage({ navigate, registerLeaveGuard }) {
 }
 
 export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
-  const { state, navigate: navigateFlow, next, back, reset } = useCareerFlow();
+  const { state, navigate: navigateFlow, next, back } = useCareerFlow();
   const [resumeName, setResumeName] = useState("");
   const [notice, setNotice] = useState("");
   const [documentParse, setDocumentParse] = useState(EMPTY_PARSE_STATE);
@@ -67,17 +65,13 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
   const [conclusionProvenance, setConclusionProvenance] = useState(null);
   const [evidenceDegradation, setEvidenceDegradation] = useState(null);
   const [companyRoleState, setCompanyRoleState] = useState(EMPTY_COMPANY_ROLE_STATE);
-  const [reportExported, setReportExported] = useState(false);
-  const [byokState, setByokState] = useState({ active: false, hasKey: false, provider: "openai-compatible" });
   const parseControllerRef = useRef(null);
   const documentSequenceRef = useRef(0);
   const stageRef = useRef(null);
   const previousStepRef = useRef(state.step);
   const companyLoadSequenceRef = useRef(0);
   const sessionResourcesRef = useRef(null);
-  const byokVaultRef = useRef(null);
   if (sessionResourcesRef.current === null) sessionResourcesRef.current = createCareerSessionResourceRegistry();
-  if (byokVaultRef.current === null) byokVaultRef.current = createByokMemoryVault();
 
   const protectAndExtractParsedResult = async (result, format, signal) => {
     documentSequenceRef.current += 1;
@@ -126,11 +120,10 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
 
   useEffect(() => () => {
     sessionResourcesRef.current?.clear("page_unmounted");
-    byokVaultRef.current?.clear();
   }, []);
 
   const hasUnsavedReportSession = Boolean(documentParse.result || jdText || careerAnalysis || actionPlan);
-  const shouldWarnBeforeLeave = byokState.hasKey || (hasUnsavedReportSession && !reportExported);
+  const shouldWarnBeforeLeave = hasUnsavedReportSession;
   useEffect(() => {
     if (!shouldWarnBeforeLeave) return undefined;
     const warnBeforeLeave = (event) => {
@@ -150,7 +143,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
     const file = event.target.files?.[0];
     if (!file) return;
     event.target.value = "";
-    setReportExported(false);
     parseControllerRef.current?.abort();
     setResumeName(file.name);
 
@@ -195,7 +187,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
   };
 
   const handleTextSubmit = async (text, source) => {
-    setReportExported(false);
     parseControllerRef.current?.abort();
     const controller = new AbortController();
     const unregisterController = sessionResourcesRef.current.registerAbortController(controller);
@@ -250,47 +241,7 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
     setEvidenceDegradation(null);
     companyLoadSequenceRef.current += 1;
     setCompanyRoleState(EMPTY_COMPANY_ROLE_STATE);
-    setReportExported(false);
     setNotice("已停止本地解析");
-  };
-
-  const resetFlow = async () => {
-    sessionResourcesRef.current.clear("user_cleared_session");
-    byokVaultRef.current.clear();
-    parseControllerRef.current = null;
-    documentSequenceRef.current += 1;
-    setResumeName("");
-    setDocumentParse(EMPTY_PARSE_STATE);
-    setCareerStage("internship");
-    setTargetDirection("product-manager");
-    setBackupDirections([]);
-    setTargetLocations(["上海"]);
-    setApplicationStart("30_days");
-    setHardConstraints("");
-    setRecommendationExclusions(EMPTY_RECOMMENDATION_EXCLUSIONS);
-    setCareerAnalysis(null);
-    setJdText("");
-    setJdProfile(null);
-    setJdError("");
-    setJdGapAnalysis(null);
-    setApplicationTierPlan(null);
-    setActionPlan(null);
-    setCompletedActionIds(new Set());
-    setConclusionProvenance(null);
-    setEvidenceDegradation(null);
-    companyLoadSequenceRef.current += 1;
-    setCompanyRoleState(EMPTY_COMPANY_ROLE_STATE);
-    setReportExported(false);
-    setByokState({ active: false, hasKey: false, provider: "openai-compatible" });
-    reset();
-    await clearCareerCopilotBrowserData({
-      sessionStorage: window.sessionStorage,
-      localStorage: window.localStorage,
-      caches: window.caches,
-      indexedDB: window.indexedDB,
-      document: window.document,
-    });
-    setNotice("本次数据已彻底清除，无法恢复");
   };
 
   const handleResumeFactsChange = (resumeFacts) => {
@@ -303,7 +254,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
     setEvidenceDegradation(null);
     companyLoadSequenceRef.current += 1;
     setCompanyRoleState(EMPTY_COMPANY_ROLE_STATE);
-    setReportExported(false);
     setDocumentParse((current) => current.result ? { ...current, result: { ...current.result, resumeFacts } } : current);
   };
 
@@ -350,7 +300,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
       setConclusionProvenance(null);
       companyLoadSequenceRef.current += 1;
       setCompanyRoleState(EMPTY_COMPANY_ROLE_STATE);
-      setReportExported(false);
       setCareerAnalysis(initial.careerAnalysis);
       setEvidenceDegradation(initial.evidenceDegradation);
       next();
@@ -395,7 +344,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
   };
 
   const handleJdChange = (value) => {
-    setReportExported(false);
     setJdText(value);
     setJdProfile(null);
     setJdGapAnalysis(null);
@@ -406,21 +354,6 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
     companyLoadSequenceRef.current += 1;
     setCompanyRoleState(EMPTY_COMPANY_ROLE_STATE);
     setJdError("");
-  };
-
-  const enableByok = () => setByokState((current) => ({ ...current, active: true }));
-  const disableByok = () => {
-    byokVaultRef.current.clear();
-    setByokState({ active: false, hasKey: false, provider: "openai-compatible" });
-  };
-  const storeByokKey = (provider, apiKey) => {
-    const result = byokVaultRef.current.set(provider, apiKey);
-    if (result.ok) setByokState({ active: true, hasKey: true, provider });
-    return result;
-  };
-  const clearByokKey = () => {
-    byokVaultRef.current.clear();
-    setByokState((current) => ({ ...current, hasKey: false }));
   };
 
   const handleDirectionChange = (direction) => {
@@ -440,9 +373,8 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
     goals: <GoalsScreen stage={careerStage} direction={targetDirection} backupDirections={backupDirections} targetLocations={targetLocations} applicationStart={applicationStart} hardConstraints={hardConstraints} exclusions={recommendationExclusions} onStageChange={setCareerStage} onDirectionChange={handleDirectionChange} onBackupDirectionsChange={setBackupDirections} onTargetLocationsChange={setTargetLocations} onApplicationStartChange={setApplicationStart} onHardConstraintsChange={setHardConstraints} onExclusionsChange={setRecommendationExclusions} onNext={handleGoalsComplete} />,
     questions: <QuestionsScreen jdText={jdText} jdError={jdError} jdAnalysisEnabled={careerCopilotFeatures.jdAnalysis} evidenceDegradation={evidenceDegradation} onDegradationAnswer={handleDegradationAnswer} onCorrectFacts={() => navigateFlow("facts", { allowUnvisited: true })} onJdChange={handleJdChange} onNext={handleQuestionsComplete} />,
     generating: <GeneratingScreen jdProfile={jdProfile} companyRoleStatus={companyRoleState.status} onNext={next} />,
-    report: <ReportScreen analysis={careerAnalysis} jdGapAnalysis={jdGapAnalysis} applicationTierPlan={applicationTierPlan} actionPlan={actionPlan} companyRoleRecommendations={companyRoleState.recommendations} companyRoleStatus={companyRoleState.status} conclusionProvenance={conclusionProvenance} evidenceDegradation={evidenceDegradation} resumeFacts={documentParse.result?.resumeFacts ?? null} careerGoals={{ stage: careerStage, direction: targetDirection, backupDirections, targetLocations, applicationStart, hardConstraints, exclusions: recommendationExclusions }} printingEnabled={careerCopilotFeatures.reportPrinting} onExport={() => setReportExported(true)} onNext={() => navigateFlow("actions")} onCorrect={() => navigateFlow(careerAnalysis ? "facts" : "material", { allowUnvisited: true })} />,
-    actions: <ActionsScreen actionPlan={actionPlan} completedIds={completedActionIds} onToggleComplete={toggleActionComplete} conclusionProvenance={conclusionProvenance} resumeFacts={documentParse.result?.resumeFacts ?? null} onSettings={() => navigateFlow("settings")} />,
-    settings: <SettingsScreen onReset={resetFlow} byok={{ available: careerCopilotFeatures.bringYourOwnKey, ...byokState, onEnable: enableByok, onDisable: disableByok, onStoreKey: storeByokKey, onClearKey: clearByokKey }} />,
+    report: <ReportScreen analysis={careerAnalysis} jdGapAnalysis={jdGapAnalysis} applicationTierPlan={applicationTierPlan} actionPlan={actionPlan} companyRoleRecommendations={companyRoleState.recommendations} companyRoleStatus={companyRoleState.status} conclusionProvenance={conclusionProvenance} evidenceDegradation={evidenceDegradation} resumeFacts={documentParse.result?.resumeFacts ?? null} careerGoals={{ stage: careerStage, direction: targetDirection, backupDirections, targetLocations, applicationStart, hardConstraints, exclusions: recommendationExclusions }} onNext={() => navigateFlow("actions")} onCorrect={() => navigateFlow(careerAnalysis ? "facts" : "material", { allowUnvisited: true })} />,
+    actions: <ActionsScreen actionPlan={actionPlan} completedIds={completedActionIds} onToggleComplete={toggleActionComplete} conclusionProvenance={conclusionProvenance} resumeFacts={documentParse.result?.resumeFacts ?? null} />,
   }[state.step];
 
   return (
@@ -455,7 +387,7 @@ export function CareerCopilotExperience({ navigate, registerLeaveGuard }) {
         {!FOOTER_HIDDEN_STEPS.has(state.step) && <CopilotFooter onBack={back} />}
       </div>
       <div className={`copilot-notice ${notice ? "is-visible" : ""}`} aria-live="polite">{notice}</div>
-      {shouldWarnBeforeLeave && <div className="copilot-ephemeral-reminder" role="status"><ShieldCheck size={15} /><span><strong>本次内容不会自动保存</strong>{byokState.hasKey ? "刷新或关闭页面后，临时密钥与本次材料将被清除。" : "刷新或关闭页面后，简历与报告将被清除；请先复制或保存 PDF。"}</span></div>}
+      {shouldWarnBeforeLeave && <div className="copilot-ephemeral-reminder" role="status"><ShieldCheck size={15} /><span><strong>本次内容不会自动保存</strong>刷新或关闭页面后，简历与报告将被清除；请先复制或保存 PDF。</span></div>}
     </section>
   );
 }

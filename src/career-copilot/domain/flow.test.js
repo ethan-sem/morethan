@@ -12,6 +12,14 @@ describe("career copilot flow", () => {
     expect(next.visited).toEqual(["intro", "material"]);
   });
 
+  it("migrates the removed settings step to actions without preserving it in route state", () => {
+    expect(sanitizeFlowState({ step: "settings", visited: ["intro", "actions", "settings"] })).toEqual({
+      version: 1,
+      step: "actions",
+      visited: ["intro", "actions"],
+    });
+  });
+
   it("blocks unvisited jumps unless explicitly allowed", () => {
     const blocked = flowReducer(DEFAULT_FLOW_STATE, { type: "NAVIGATE", step: "report" });
     const example = flowReducer(DEFAULT_FLOW_STATE, { type: "NAVIGATE", step: "report", allowUnvisited: true });
