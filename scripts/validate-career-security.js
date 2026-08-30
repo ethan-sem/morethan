@@ -217,7 +217,7 @@ function validateDependencyAudit() {
     return;
   }
   const audit = readJson(auditPath);
-  const lockHash = sha256(readFileSync(join(root, "pnpm-lock.yaml")));
+  const lockHash = sha256NormalizedText(readFileSync(join(root, "pnpm-lock.yaml"), "utf8"));
   if (audit.lockfileSha256 !== lockHash) fail("DEPENDENCY_AUDIT_LOCK_MISMATCH", rel(auditPath));
   if (audit.status !== "passed" || audit.vulnerabilities?.critical !== 0 || audit.vulnerabilities?.high !== 0) fail("DEPENDENCY_HIGH_RISK_UNRESOLVED", rel(auditPath));
   const age = Date.now() - Date.parse(audit.auditedAt);
@@ -250,7 +250,7 @@ function writeReleaseReports(files) {
   const supplyChain = {
     schemaVersion: "1.0.0",
     generatedAt: new Date().toISOString(),
-    lockfileSha256: sha256(readFileSync(join(root, "pnpm-lock.yaml"))),
+    lockfileSha256: sha256NormalizedText(readFileSync(join(root, "pnpm-lock.yaml"), "utf8")),
     productionDependenciesPinned: true,
     auditReport: "m7-06-dependency-audit.json",
     components,
@@ -312,6 +312,10 @@ function readJson(path) {
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+function sha256NormalizedText(value) {
+  return sha256(value.replace(/\r\n?/gu, "\n"));
 }
 
 function rel(file) {

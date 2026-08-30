@@ -3,7 +3,7 @@
   "auditedAt": "2026-08-30T12:10:17.3665244Z",
   "command": "pnpm audit --prod --json",
   "status": "passed",
-  "lockfileSha256": "7d3471ed5680ed53e1e7f9d6feeb23067e463ca3f8bcb3dcc7b69daeed66b98c",
+  "lockfileSha256": "80b527571a8fa3d9e3c3dea28d1c42ccb7614f9546130902738e9a3673e3c24a",
   "vulnerabilities": {
     "info": 0,
     "low": 0,
