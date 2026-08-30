@@ -7,7 +7,7 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const mode = process.argv[2] ?? "source";
 const policy = readJson(join(root, "security", "m7-06-policy.json"));
 const failures = [];
-const textExtensions = new Set([".css", ".env", ".html", ".js", ".jsx", ".json", ".md", ".mjs", ".txt", ".ts", ".tsx", ".yaml", ".yml"]);
+const textExtensions = new Set([".css", ".env", ".html", ".js", ".jsx", ".json", ".md", ".mjs", ".txt", ".ts", ".tsx", ".xml", ".yaml", ".yml"]);
 const secretPatterns = [
   ["SECRET_PRIVATE_KEY", /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/u],
   ["SECRET_AWS_ACCESS_KEY", /\bAKIA[0-9A-Z]{16}\b/u],
@@ -286,8 +286,10 @@ function isApplicationSource(file) {
 function isAllowedReleasePath(path) {
   return path === "index.html"
     || path === "_headers"
+    || path === "robots.txt"
+    || path === "sitemap.xml"
     || path === ".vite/manifest.json"
-    || /^(?:assets|data|game)\//u.test(path);
+    || /^(?:assets|data)\//u.test(path);
 }
 
 function isTextFile(file) {
