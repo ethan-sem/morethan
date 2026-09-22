@@ -5,7 +5,7 @@ export function CopilotHeader({ onExit }) {
   return (
     <header className="copilot-local-nav">
       <button type="button" className="copilot-back-brand" onClick={onExit}>
-        <ArrowLeft size={17} />返回 MoreThan
+        <ArrowLeft size={17} />返回 Edutoro
       </button>
       <div className="copilot-product-name"><Bot size={18} /><span>智能求职助手</span><small>MVP</small></div>
       <div className="copilot-trust"><ShieldCheck size={16} />完整免费 · 浏览器本地处理</div>

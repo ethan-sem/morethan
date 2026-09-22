@@ -36,7 +36,7 @@ const server = createServer((request, response) => {
   response.end(readFileSync(candidate));
 });
 
-server.listen(port, host, () => console.log(`MoreThan secure preview: http://${host}:${port}`));
+server.listen(port, host, () => console.log(`Edutoro secure preview: http://${host}:${port}`));
 for (const signal of ["SIGINT", "SIGTERM"]) process.on(signal, () => server.close(() => process.exit(0)));
 
 function safePathname(value) {

@@ -18,6 +18,7 @@ import {
   Target,
   Trophy,
   Users,
+  X,
 } from "lucide-react";
 import "./styles.css";
 
@@ -43,6 +44,99 @@ const navItems = [
 ];
 
 const hiddenPublicPageIds = Object.freeze(["career-copilot"]);
+
+const caseDetailDemos = Object.freeze({
+  "美团-测试开发实习": {
+    classYear: "27届",
+    offer: "美团测试开发实习",
+    background: "华东地区双非本科｜计算机科学与技术",
+    experience: "本地软件企业测试实习（3个月）；校内自动化测试平台项目",
+    highlight: "补齐测试方法与接口自动化表达后，完成两轮技术面试。",
+  },
+  "宝洁-品牌管理实习": {
+    classYear: "26届",
+    offer: "宝洁品牌管理暑期实习",
+    background: "985商科硕士｜市场营销",
+    experience: "头部快消市场部实习；校园品牌策划项目负责人",
+    highlight: "将市场研究经历重构为消费者洞察案例，并完成英文案例面试训练。",
+  },
+  "美团-产品运营实习": {
+    classYear: "25届",
+    offer: "美团产品运营实习",
+    background: "211本科｜国际商务",
+    experience: "本地生活平台运营实习；校园创业项目核心成员",
+    highlight: "围绕用户增长与活动复盘补强数据表达，实现商科背景向互联网运营转型。",
+  },
+  "中金公司-投行实习": {
+    classYear: "24届",
+    offer: "中金公司投行实习",
+    background: "985金融硕士｜金融学",
+    experience: "头部券商行业研究实习；四大交易咨询项目经历",
+    highlight: "统一项目口径并强化财务分析细节，完成高强度专业问题模拟。",
+  },
+});
+
+const caseDetailProfiles = Object.freeze([
+  {
+    test: (item) => item.industry === "咨询",
+    major: "商科 / 理工科 / 人文社科相关专业",
+    experiences: ["精品咨询公司项目实习；商业案例竞赛经历", "企业战略部门实习；校内咨询社团项目", "行业研究助理实习；商业分析课程项目", "创业公司战略实习；跨学科案例项目"],
+    highlights: ["将开放问题拆解为结构化分析框架，强化假设、验证与结论表达。", "围绕市场规模、盈利逻辑和落地建议完成多轮 Case 模拟。", "补强数据判断与高压沟通，在有限时间内形成清晰、有依据的建议。"],
+  },
+  {
+    test: (item) => /金融|银行|财会/.test(item.industry),
+    major: "金融 / 会计 / 经济相关专业",
+    experiences: ["区域券商研究助理实习；校级投资分析大赛项目", "会计师事务所审计实习；企业估值课程项目", "精品咨询公司项目实习；商业案例竞赛经历", "银行业务部门实习；校园金融社团研究项目"],
+    highlights: ["重构项目逻辑与财务分析口径，强化专业问题的结构化回答。", "补齐行业研究框架，并围绕估值、商业模式和风险点完成模拟面试。", "将零散项目整理为完整案例，提升数据敏感度与高压表达稳定性。"],
+  },
+  {
+    test: (item) => /测试|开发|算法|前端|后端/.test(item.role),
+    major: "计算机 / 软件工程相关专业",
+    experiences: ["中型科技公司研发实习；校内系统开发项目", "实验室算法项目；开源社区协作经历", "软件企业技术实习；课程设计与工程实践项目", "校园技术团队核心成员；独立开发项目经历"],
+    highlights: ["梳理技术栈与项目难点，用可验证的指标呈现工程能力。", "围绕基础知识、项目深挖与系统设计完成多轮模拟面试。", "补齐岗位核心知识，并提升技术方案取舍与复盘表达。"],
+  },
+  {
+    test: (item) => /供应链|采销|渠道|零售规划/.test(item.role),
+    major: "工业工程 / 供应链 / 商科相关专业",
+    experiences: ["制造企业供应链实习；库存优化课程项目", "零售企业运营实习；校园采购分析项目", "物流企业计划岗实习；数据建模竞赛经历", "快消渠道支持实习；市场调研项目经历"],
+    highlights: ["围绕需求预测、库存和跨部门协作重构经历表达。", "补充业务指标与复盘逻辑，强化供应链场景题的分析能力。", "将执行型经历转化为可量化的效率与经营改善成果。"],
+  },
+  {
+    test: (item) => /数据|分析|研究|收益管理/.test(item.role),
+    major: "统计学 / 经济学 / 数据科学相关专业",
+    experiences: ["互联网平台数据实习；用户行为分析课程项目", "咨询公司分析实习；商业数据竞赛经历", "校内研究助理；独立完成数据建模项目", "零售企业经营分析实习；市场洞察项目"],
+    highlights: ["统一业务口径并补强 SQL、指标体系与分析结论的闭环表达。", "从描述数据升级为解释问题，突出洞察形成与业务落地过程。", "围绕估算、案例分析和图表解读完成针对性面试训练。"],
+  },
+  {
+    test: (item) => /产品|策划/.test(item.role),
+    major: "商科 / 人文社科 / 工科相关专业",
+    experiences: ["创业团队产品实习；校园小程序项目负责人", "互联网运营实习；用户调研与原型设计项目", "创新创业项目核心成员；独立产品分析作品集", "行业研究实习；校园数字化产品项目"],
+    highlights: ["从功能描述转向用户问题、方案取舍与结果验证，建立产品闭环。", "围绕需求分析、优先级判断和产品案例完成高还原面试演练。", "重构跨专业经历，突出用户洞察、协作推进与数据复盘能力。"],
+  },
+  {
+    test: () => true,
+    major: "市场营销 / 商科 / 人文社科相关专业",
+    experiences: ["成长型企业运营实习；校园活动项目负责人", "品牌市场实习；社交媒体内容项目经历", "学生组织核心成员；校企合作项目经历", "本地生活企业实习；用户增长课程项目"],
+    highlights: ["将执行事项转化为目标、动作和结果，补强量化与复盘表达。", "围绕用户洞察、活动策略和跨部门协作完成案例面试训练。", "重构岗位匹配逻辑，突出业务理解、推进能力与结果意识。"],
+  },
+]);
+
+const buildCaseDetail = (item, index) => {
+  const featured = caseDetailDemos[`${item.company}-${item.role}`];
+  if (featured) return featured;
+
+  const allocationRank = (index * 29) % 64;
+  const classYear = allocationRank < 6 ? "24届" : allocationRank < 18 ? "25届" : allocationRank < 38 ? "26届" : "27届";
+  const profile = caseDetailProfiles.find((candidate) => candidate.test(item));
+
+  return {
+    classYear,
+    offer: `${item.company}｜${item.role}`,
+    background: `${item.profile}｜${profile.major}`,
+    experience: profile.experiences[index % profile.experiences.length],
+    highlight: profile.highlights[index % profile.highlights.length],
+  };
+};
 
 const services = [
   { no: "01", name: "启航计划", title: "校招陪跑", desc: "面向应届生，建立完整而清晰的校招路径" },
@@ -87,12 +181,12 @@ const escortComparison = [
 ];
 
 const members = [
-  ["Ethan", "主管合伙人", "互联网 / 商科", "./assets/team-ethan.jpg", "曾供职于多家互联网中大厂，具备多段商科及互联网行业工作经验，拥有多年求职培训服务经验，尤其擅长互联网行业求职服务。"],
+  ["Leon", "主管合伙人", "互联网 / 商科", "./assets/team-ethan.jpg", "Leon曾供职于美团、京东、字节跳动等多家互联网头部大厂，具备丰富互联网行业工作经验，并拥有多年求职培训服务经验。"],
   ["Alex", "互联网团队负责人", "BAT 核心业务线", "./assets/team-alex.jpg", "2019年校招加入BAT，并在核心业务线持续工作至今，在互联网实习、校招及社招求职领域具备丰富经验。"],
-  ["William", "商科团队负责人", "金融 / 财会", "./assets/team-william.jpg", "曾供职于银行、事务所、券商等多家金融机构，在金融、财会等财经领域拥有丰富的求职服务执行经验。"],
+  ["Rhea", "商科团队负责人", "战略 / 咨询 / PEVC", "./assets/team-rhea.jpg", "清华大学金融本硕，具备丰富的一二级工作与求职辅导经验，尤其是在战略/咨询/pevc等领域具备诸多卓越洞察。"],
   ["Mia", "技术团队负责人", "大模型 / 算法", "./assets/team-mia.jpg", "持有清华大学博士学位，毕业后校招进入头部互联网大厂从事大模型算法工作，目前负责团队各方向技术岗位求职服务。"],
   ["Lucas", "国央企团队负责人", "国央企求职", "./assets/team-lucas.jpg", "毕业后持续任职于国企，具备丰富的国央企求职支持经验，在团队中专注于国央企相关求职服务。"],
-  ["木木", "互联网-产品团队", "斩获美团北斗计划等顶级offer", "./assets/team-mumu.webp", "曾供职于美团、腾讯、字节等大厂，具备多年产品经理正职工作与求职辅导经验。秋招曾收获美团北斗计划、字节sp、腾讯ssp、拼多多管培、快手、虾皮等顶级offer。"],
+  ["木木", "互联网-产品团队负责人", "斩获美团北斗计划等顶级offer", "./assets/team-mumu.webp", "曾供职于美团、腾讯、字节等大厂，具备多年产品经理正职工作与求职辅导经验。秋招曾收获美团北斗计划、字节sp、腾讯ssp、拼多多管培、快手、虾皮等顶级offer。"],
 ];
 
 const values = [
@@ -184,13 +278,52 @@ const serviceCatalog = [
     title: "顶尖名企计划",
     directoryTitle: "求职陪跑方案定制",
     titleNote: "——1v1定制求职解决方案",
-    subtitle: "充分结合个人背景的一对一定制",
-    summary: "如您希望结合个人情况，规划包括背景提升、实习陪跑、校招陪跑在内的长周期求职解决方案，我们支持1v1定制求职陪跑方案。",
-    directorySummary: ["如您希望结合个人情况，规划包括背景提升、实习陪跑、校招陪跑", "在内的长周期求职解决方案，我们支持1v1定制求职陪跑方案。"],
-    audience: ["需要规划长周期求职路径", "希望组合多项服务解决复杂问题", "需要根据个人背景定制服务重点"],
-    features: ["个人背景与长期规划", "按实际需要\n灵活设计陪跑方案", "阶段目标、节奏与\n重点动态调整", "由专属导师持续跟进"],
-    process: ["一对一沟通个人背景与目标", "识别关键差距与服务优先级", "制定长周期组合服务方案", "按阶段执行、复盘并动态调整"],
-    deliverables: ["个人求职问题诊断", "长周期求职路径", "定制服务组合与阶段目标", "持续复盘和调整建议"],
+    subtitle: "高阶定制 · 长期求职陪跑",
+    summary: "基于学员背景，灵活组合求职服务模块，设计最契合你的专属求职陪跑方案。在长期陪跑过程中，持续积累竞争力。",
+    directorySummary: ["结合个人背景与求职目标，灵活组合背景提升、实习陪跑和校招陪跑，", "定制长周期成长路径，并随阶段进展持续调整。"],
+    audience: ["希望提前布局求职的研0/低年级同学", "跨专业求职、需要补齐对口经历的同学", "背景或履历较弱、需要系统提升的应届生", "距离秋招尚有一段时间，希望极限逆天改命。"],
+    features: ["长期陪跑，\n按阶段设定目标", "针对性方案，\n服务模块灵活组合", "持续复盘，\n不断调整陪跑计划", "多对一求职陪跑服务，\n专业团队持续陪跑"],
+    modules: [
+      ["背景提升", "补齐对口经历，最快建立基础背景。"],
+      ["实习陪跑", "针对于实习的短周期陪跑，详见服务方案—实习陪跑部分。"],
+      ["校招陪跑", "针对于校招的最终陪跑，详见服务方案—校招陪跑部分。"],
+    ],
+    customSteps: [
+      ["深度诊断", "梳理学员背景、短板、时间规划。"],
+      ["定制方案", "求职团队定制专属陪跑方案。"],
+      ["沟通确认", "对齐优先级，明确最终方案。"],
+      ["执行复盘", "正式启动求职陪跑服务。"],
+    ],
+  },
+];
+
+const solutionCases = [
+  {
+    label: "研0长期布局",
+    title: "从一段审计实习到大厂转正",
+    summary: "3段实习陪跑 + 1轮校招陪跑",
+    result: "字节跳动·抖音电商转正 offer",
+    startingPoint: "2024年9月，学员推免至两财一贸，研0阶段签约；当时仅有一段事务所审计实习。",
+    plan: "结合课程安排、就业目标与预算，将3段实习陪跑安排在研0阶段，并衔接1轮校招陪跑，持续跟进约两年。",
+    progress: "陪跑期间陆续获得得物、京东实习机会，逐步积累互联网相关经历。",
+  },
+  {
+    label: "研0提前积累",
+    title: "从零实习到快消大厂正式 offer",
+    summary: "2段实习陪跑 + 1轮校招陪跑",
+    result: "快消大厂正式 offer",
+    startingPoint: "2025年12月，学员获得UCL硕士录取，并于研0阶段签约；起点为零实习经历。",
+    plan: "根据时间安排与求职目标，规划2段研0实习陪跑及1轮校招陪跑，分阶段跟进求职进展。",
+    progress: "陪跑过程中陆续获得大厂实习机会，逐步建立与目标岗位匹配的履历。",
+  },
+  {
+    label: "本科求职转向",
+    title: "7个月积累三段实习经历",
+    summary: "日常实习冲刺 + 校招陪跑",
+    result: "拼多多正式 offer",
+    startingPoint: "2026年2月，普通211本科大三学员确定无法保研，且几乎没有实习经历。",
+    plan: "团队调整原有方向，转而集中冲刺日常实习，以连续的实习积累补齐求职履历。",
+    progress: "7个月内完成三段实习积累，并在后续校招中形成更完整的岗位竞争力。",
   },
 ];
 
@@ -250,6 +383,7 @@ function App() {
   const [introActive, setIntroActive] = useState(() => !window.location.hash || window.location.hash === "#home");
   const [homeVisit, setHomeVisit] = useState(0);
   const [activeMember, setActiveMember] = useState(0);
+  const [activeCaseDetail, setActiveCaseDetail] = useState(null);
   const activePageRef = useRef(activePage);
   const careerCopilotLeaveGuardRef = useRef(null);
   activePageRef.current = activePage;
@@ -343,13 +477,27 @@ function App() {
     };
   }, [activePage]);
 
+  useEffect(() => {
+    if (!activeCaseDetail) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setActiveCaseDetail(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeCaseDetail]);
+
   return (
     <main data-page={activePage} className={introActive ? "intro-active" : "intro-complete"}>
       {introActive && (
         <div className="brand-intro" aria-hidden="true">
           <div className="intro-signature">
             <LogoMark />
-            <span>MoreThan<b>求职</b></span>
+            <span>Edutoro<b>求职</b></span>
           </div>
           <div className="intro-curtain" />
         </div>
@@ -361,15 +509,14 @@ function App() {
       />
 
       <section id="home" key={`home-${homeVisit}`} className="hero reveal site-page page-home">
-        <img className="hero-art" src="./assets/morethan-career-path-hero-v2.webp" width="1672" height="941" fetchPriority="high" alt="从诊断、简历到 offer 的求职成长路径" />
         <div className="shell hero-inner">
           <div className="hero-copy">
-            <p className="kicker">MORETHAN CAREER EDUCATION</p>
+            <p className="kicker">✦ 2026 求职服务已更新</p>
             <h1>
               <span className="title-mask"><span>让每一步求职，</span></span>
               <span className="title-mask"><span>都有清晰方向</span></span>
             </h1>
-            <p className="lead">一站式求职服务工作室 | 求职解决方案</p>
+            <p className="lead">从方向诊断到简历、面试与 offer 决策，<br />用专业方法和全程陪伴，把求职每一步做实。</p>
             <div className="actions">
               <button className="button primary" onClick={() => navigate("services")}>了解服务 <ArrowRight size={17} /></button>
               <button className="button text-button" onClick={() => navigate("proof")}>查看学员案例 <ArrowRight size={17} /></button>
@@ -381,6 +528,7 @@ function App() {
             <span><strong>1000+</strong>深度服务</span>
           </div>
         </div>
+        <HeroJourneyVisual />
           <button className="scroll-cue" onClick={() => document.getElementById("overview")?.scrollIntoView({ behavior: "smooth" })} aria-label="继续浏览首页"><ArrowDown size={18} /></button>
         </section>
 
@@ -398,22 +546,57 @@ function App() {
         <div className="shell">
           <SectionHead title="每一种成长，都有结果作为证据" light singleLine />
           <div className="case-grid">
-            {cases.map((item, index) => (
-              <article key={`${item.company}-${item.role}`} className="case-item" style={{ "--case-delay": `${(index % 4) * 70}ms` }}>
-                <div><small>{item.industry}</small></div>
-                <strong>{item.company}</strong>
-                <h3>{item.role}</h3>
-                <p>{item.profile}</p>
-              </article>
-            ))}
+            {cases.map((item, index) => {
+              const detail = buildCaseDetail(item, index);
+              const openDetail = () => setActiveCaseDetail({ ...item, ...detail });
+              return (
+                <article
+                  key={`${item.company}-${item.role}`}
+                  className="case-item is-interactive"
+                  style={{ "--case-delay": `${(index % 4) * 70}ms` }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`查看${detail.offer}匿名化案例`}
+                  onClick={openDetail}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openDetail();
+                    }
+                  }}
+                >
+                  <div><small>{item.industry}</small></div>
+                  <strong>{item.company}</strong>
+                  <h3>{item.role}</h3>
+                  <p>{item.profile}</p>
+                  <span className="case-open-hint">查看案例 <ArrowUpRight size={15} /></span>
+                </article>
+              );
+            })}
           </div>
         </div>
+        {activeCaseDetail && (
+          <div className="case-modal-backdrop" role="presentation" onMouseDown={() => setActiveCaseDetail(null)}>
+            <article className="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-modal-title" onMouseDown={(event) => event.stopPropagation()}>
+              <button className="case-modal-close" type="button" onClick={() => setActiveCaseDetail(null)} aria-label="关闭案例详情" autoFocus><X size={20} /></button>
+              <span className="case-modal-year">{activeCaseDetail.classYear}</span>
+              <h2 id="case-modal-title">{activeCaseDetail.offer}</h2>
+              <dl>
+                <div><dt>学员届次</dt><dd>{activeCaseDetail.classYear}</dd></div>
+                <div><dt>Offer</dt><dd>{activeCaseDetail.offer}</dd></div>
+                <div><dt>BG</dt><dd>{activeCaseDetail.background}</dd></div>
+                <div><dt>实习经历</dt><dd>{activeCaseDetail.experience}</dd></div>
+              </dl>
+              <div className="case-modal-highlight"><small>关键提升</small><p>{activeCaseDetail.highlight}</p></div>
+            </article>
+          </div>
+        )}
       </section>
 
       <section id="community" className="section community-section reveal site-page page-community">
         <div className="shell community-layout">
           <div className="community-board" aria-label="社群信息示意">
-            <div className="board-head"><span>MORETHAN COMMUNITY</span><b>LIVE</b></div>
+            <div className="board-head"><span>EDUTORO COMMUNITY</span><b>LIVE</b></div>
             {[
               ["今日内推机会更新", "刚刚更新"],
               ["笔面试真题资料", "海量真题"],
@@ -437,18 +620,18 @@ function App() {
           <div className="shell">
             <div className="about-profile">
               <div>
-                <p className="kicker">ABOUT MORETHAN</p>
+                <p className="kicker">ABOUT EDUTORO</p>
                 <h2>一家行业领先的<br />教育咨询服务机构</h2>
               </div>
               <div className="about-profile-copy">
-                <p>MoreThan求职是一家行业领先的教育咨询服务机构。自成立以来深度服务24-27届共计1000+名学生，为广泛的非应届生、应届生及职场中期转型人士提供包括求职辅导、背景提升、求职内推及全流程求职陪跑在内的一系列求职服务。</p>
+                <p>Edutoro是一家行业领先的教育咨询服务机构。自成立以来深度服务24-27届共计1000+名学生，为广泛的非应届生、应届生及职场中期转型人士提供包括求职辅导、背景提升、求职内推及全流程求职陪跑在内的一系列求职服务。</p>
                 <p>如今，我们已成长为一站式综合性求职服务方案提供商。</p>
               </div>
             </div>
             <div className="team-layout">
             <div className="team-statement">
               <LogoMark />
-              <p>MoreThan不止帮助学员收获 offer，更希望帮助他们建立受益长远的判断力、行动力与成长能力。</p>
+              <p>Edutoro不止帮助学员收获 offer，更希望以知识连接成长，用专业陪伴每一个关键选择。</p>
             </div>
             <div className="team-carousel" aria-label="导师团队轮播">
               <div className="team-card-stage">
@@ -470,9 +653,6 @@ function App() {
                 })}
                 <button className="team-arrow is-left" type="button" aria-label="上一位导师" onClick={() => changeMember(-1)}><ChevronLeft /></button>
                 <button className="team-arrow is-right" type="button" aria-label="下一位导师" onClick={() => changeMember(1)}><ChevronRight /></button>
-              </div>
-              <div className="team-dots" aria-label="选择导师">
-                {members.map(([name], index) => <button className={index === activeMember ? "is-active" : ""} type="button" key={name} aria-label={`查看${name}`} onClick={() => setActiveMember(index)} />)}
               </div>
             </div>
             </div>
@@ -501,12 +681,12 @@ function App() {
         <div className="shell contact-layout">
           <div>
             <p className="kicker light-kicker">START WITH CLARITY</p>
-            <h2>先看清问题，<br />再走好下一步。</h2>
+            <h2>有温度的团队，<br />做有温度的教育</h2>
             <p>添加求职小助手，领取免费求职福利。</p>
           </div>
           <div className="qr-panel">
-            <img className="qr-image" src="./assets/contact-wechat-qr.jpg" alt="MoreThan求职小助手微信二维码" />
-            <strong>MoreThan 求职小助手</strong>
+            <img className="qr-image" src="./assets/contact-wechat-qr.jpg" alt="Edutoro求职小助手微信二维码" />
+            <strong>Edutoro 求职小助手</strong>
             <span>微信扫码添加好友</span>
           </div>
         </div>
@@ -521,7 +701,7 @@ function ServiceHub({ navigate }) {
       <div className="service-hub-intro">
         <div className="shell service-hub-grid">
           <div>
-            <p className="kicker">MORETHAN SERVICES</p>
+            <p className="kicker">EDUTORO SERVICES</p>
             <h1>覆盖实习与校招的<br />全链路求职服务</h1>
           </div>
           <div className="service-hub-copy">
@@ -600,6 +780,7 @@ function ServiceDetailPage({ service, navigate }) {
               <div>{service.audience.map((item, index) => <p key={item}><span>0{index + 1}</span>{item}</p>)}</div>
             </div>
           </div>
+          {service.modules && <SolutionDetails service={service} />}
           {service.journey && <EscortComparison active={service.id} />}
           {service.journey && <ServiceJourney service={service} />}
           <ServiceFeatureSection title={service.journey ? "服务保障" : "服务内容"} eyebrow={service.journey ? "SERVICE SUPPORT" : "WHAT WE DO"} items={service.features} />
@@ -609,6 +790,85 @@ function ServiceDetailPage({ service, navigate }) {
         </>
       )}
     </section>
+  );
+}
+
+function SolutionDetails({ service }) {
+  const [activeSolutionCase, setActiveSolutionCase] = useState(null);
+
+  useEffect(() => {
+    if (!activeSolutionCase) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setActiveSolutionCase(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeSolutionCase]);
+
+  return (
+    <div className="solution-details">
+      <div className="shell">
+        <div className="solution-details-intro">
+          <p className="kicker">BUILT AROUND YOU</p>
+          <h2>私人定制求职陪跑方案<br />让服务适配学员具体背景</h2>
+          <p>三大模块可按需组合，专业团队针对性定制陪跑方案，在超长周期的陪跑中持续积累优势，领先同届竞争对手。</p>
+        </div>
+        <div className="solution-module-grid">
+          {service.modules.map(([title, description], index) => (
+            <article key={title}>
+              <span>0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+        <div className="solution-steps">
+          <div><p className="kicker">HOW IT WORKS</p><h2>方案制定流程</h2></div>
+          <ol>
+            {service.customSteps.map(([title, description]) => (
+              <li key={title}><strong>{title}</strong><span>{description}</span></li>
+            ))}
+          </ol>
+        </div>
+        <div className="solution-cases">
+          <div className="solution-cases-heading">
+            <p className="kicker">GROWTH STORIES</p>
+            <h2>典型陪跑案例</h2>
+          </div>
+          <div className="solution-case-grid">
+            {solutionCases.map((item) => (
+              <button className="solution-case-card" type="button" key={item.title} onClick={() => setActiveSolutionCase(item)}>
+                <small>{item.label}</small>
+                <strong>{item.title}</strong>
+                <span>{item.summary}</span>
+                <span className="solution-case-result">结果：{item.result}</span>
+                <span className="solution-case-more">查看详情 <ArrowUpRight size={16} /></span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      {activeSolutionCase && (
+        <div className="case-modal-backdrop" role="presentation" onMouseDown={() => setActiveSolutionCase(null)}>
+          <article className="case-modal solution-case-modal" role="dialog" aria-modal="true" aria-labelledby="solution-case-modal-title" onMouseDown={(event) => event.stopPropagation()}>
+            <button className="case-modal-close" type="button" onClick={() => setActiveSolutionCase(null)} aria-label="关闭案例详情" autoFocus><X size={20} /></button>
+            <span className="case-modal-year">{activeSolutionCase.label}</span>
+            <h2 id="solution-case-modal-title">{activeSolutionCase.title}</h2>
+            <dl>
+              <div><dt>起点</dt><dd>{activeSolutionCase.startingPoint}</dd></div>
+              <div><dt>定制方案</dt><dd>{activeSolutionCase.plan}</dd></div>
+              <div><dt>陪跑过程</dt><dd>{activeSolutionCase.progress}</dd></div>
+              <div><dt>求职结果</dt><dd>{activeSolutionCase.result}</dd></div>
+            </dl>
+          </article>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -625,7 +885,7 @@ function EscortComparison({ active }) {
       <div className="shell">
         <div className="comparison-heading">
           <p className="kicker">WHICH PROGRAM</p>
-          <h2>实习陪跑与校招陪跑<br />有什么不同？</h2>
+          <h2>实习陪跑与校招陪跑<span>有什么不同？</span></h2>
         </div>
         <div className="comparison-table">
           <div className="comparison-row is-header"><span aria-hidden="true" /><strong {...columnProps("internship")}>实习陪跑</strong><strong {...columnProps("campus")}>校招陪跑</strong></div>
@@ -647,7 +907,7 @@ function ServiceJourney({ service }) {
     <>
       <div className="process-intro service-journey-intro">
         <div className="shell process-heading">
-          <p className="kicker">THE MORETHAN METHOD</p>
+          <p className="kicker">THE EDUTORO METHOD</p>
           <h2>{service.journeyTitle}</h2>
           <div className="process-line">
             {service.journey.map((stage) => <span key={stage.id}><b>{stage.no}</b>{stage.lineTitle || stage.title}</span>)}
@@ -676,7 +936,7 @@ function Header({ activePage, navigate, navItems }) {
   return (
     <header className="topbar">
       <div className="shell nav-inner">
-        <button className="brand" onClick={() => navigate("home")} aria-label="回到首页"><LogoMark /><span>MoreThan<b>求职</b></span></button>
+        <button className="brand" onClick={() => navigate("home")} aria-label="Edutoro，回到首页"><span className="brand-logo" aria-hidden="true"><img src="./assets/edutoro-logo-source.png" alt="" /></span></button>
         <nav aria-label="主导航">{navItems.map((item) => <button className={activePage === item.id || (item.id === "services" && activePage.startsWith("service-")) ? "is-active" : ""} key={item.id} onClick={() => navigate(item.id)}>{item.label}</button>)}</nav>
         <button className="nav-cta" onClick={() => navigate("contact")}>免费咨询 <ArrowUpRight size={16} /></button>
       </div>
@@ -695,7 +955,7 @@ function HomeOverview({ navigate }) {
     <section
       id="overview"
       className="home-overview site-page page-home"
-      aria-label="MoreThan求职概览"
+      aria-label="Edutoro求职概览"
       tabIndex="0"
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") changeSlide(activeSlide - 1);
@@ -738,7 +998,7 @@ function HomeOverview({ navigate }) {
 
 function OverviewVisual({ type }) {
   if (type === "path") {
-    return <div className="overview-visual path-visual"><img src="./assets/morethan-career-path-hero-v2.webp" width="1672" height="941" loading="lazy" decoding="async" alt="求职服务路径" /></div>;
+    return <HeroJourneyVisual compact />;
   }
   if (type === "results") {
     return <div className="overview-visual results-visual"><span>100+</span><strong>OFFER</strong><div><b>500+</b> 服务学员</div><div><b>1000+</b> 深度服务</div></div>;
@@ -750,7 +1010,30 @@ function OverviewVisual({ type }) {
 }
 
 function LogoMark() {
-  return <img className="logo" src="./assets/morethan-logo-mark-transparent.png" alt="" aria-hidden="true" />;
+  return <img className="logo" src="./assets/edutoro-logo-mark.svg" alt="" aria-hidden="true" />;
+}
+
+function HeroJourneyVisual({ compact = false }) {
+  const steps = [
+    ["方向诊断", ScanSearch],
+    ["简历优化", FileCheck2],
+    ["面试训练", MessageCircleMore],
+    ["理想 offer", Trophy],
+  ];
+  return (
+    <div className={`hero-journey${compact ? " is-compact overview-visual path-visual" : ""}`} aria-label="Edutoro全链路求职陪跑路径">
+      <div className="hero-journey-head"><span>全链路求职陪跑</span><b>EDUTORO METHOD</b></div>
+      <div className="hero-journey-track">
+        {steps.map(([title, Icon]) => (
+          <article key={title}>
+            <i><Icon size={compact ? 20 : 26} strokeWidth={1.8} /></i>
+            <strong>{title}</strong>
+          </article>
+        ))}
+      </div>
+      <div className="hero-journey-proof"><span>专业方法论</span><span>导师 1v1 陪伴</span><span>数据驱动优化</span></div>
+    </div>
+  );
 }
 
 function SectionHead({ title, text, light = false, singleLine = false }) {

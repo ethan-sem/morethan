@@ -7,7 +7,7 @@ export function IntroScreen({ onStart, onExample }) {
   return (
     <div className="copilot-intro-screen">
       <div className="copilot-intro-copy">
-        <p className="copilot-eyebrow">MORETHAN CAREER COPILOT / 01</p>
+        <p className="copilot-eyebrow">EDUTORO CAREER COPILOT / 01</p>
         <h1>先看清位置，<br />再决定怎么走。</h1>
         <p className="copilot-intro-lead">提交简历和求职方向，获得一份有证据、有分层、有优先级的求职诊断。</p>
         <div className="copilot-intro-actions">

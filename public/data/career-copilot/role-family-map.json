@@ -31,7 +31,7 @@
       "publisher": "U.S. Department of Labor sponsored O*NET program",
       "url": "https://www.onetonline.org/",
       "sourceType": "public_occupation_taxonomy",
-      "usage": "用于交叉核对任务、产出和职业边界；中国校招名称由 MoreThan 映射层本地化。",
+      "usage": "用于交叉核对任务、产出和职业边界；中国校招名称由 Edutoro 映射层本地化。",
       "verifiedAt": "2026-08-14"
     }
   ],
@@ -55,7 +55,7 @@
       "jdKeywords": ["用户研究", "需求分析", "产品设计", "原型", "用户体验", "迭代"],
       "adjacentRoleFamilyIds": ["platform-strategy-product-management", "product-strategy-operations"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-product-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-product-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "enterprise-product-management",
@@ -68,7 +68,7 @@
       "jdKeywords": ["B端", "SaaS", "企业服务", "业务流程", "权限", "解决方案"],
       "adjacentRoleFamilyIds": ["platform-strategy-product-management", "business-strategy-analysis"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-product-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-product-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "platform-strategy-product-management",
@@ -81,7 +81,7 @@
       "jdKeywords": ["平台", "策略", "中台", "规则引擎", "实验", "指标体系"],
       "adjacentRoleFamilyIds": ["enterprise-product-management", "business-strategy-analysis"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-product-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-product-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "user-growth-operations",
@@ -94,7 +94,7 @@
       "jdKeywords": ["拉新", "激活", "留存", "召回", "用户分层", "转化漏斗"],
       "adjacentRoleFamilyIds": ["product-strategy-operations", "performance-growth-marketing"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-operations-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-operations-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "content-community-operations",
@@ -107,7 +107,7 @@
       "jdKeywords": ["内容策划", "社区", "社群", "新媒体", "编辑", "活跃度"],
       "adjacentRoleFamilyIds": ["user-growth-operations", "brand-communications"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-operations-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-operations-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "product-strategy-operations",
@@ -120,7 +120,7 @@
       "jdKeywords": ["产品运营", "策略运营", "商业化", "平台运营", "经营分析", "机制优化"],
       "adjacentRoleFamilyIds": ["user-growth-operations", "platform-strategy-product-management"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-operations-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-operations-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "brand-communications",
@@ -133,7 +133,7 @@
       "jdKeywords": ["品牌", "传播", "公关", "整合营销", "媒介", "舆情"],
       "adjacentRoleFamilyIds": ["market-research-strategy", "content-community-operations"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-marketing-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-marketing-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "performance-growth-marketing",
@@ -146,7 +146,7 @@
       "jdKeywords": ["投放", "获客", "转化", "归因", "ROI", "搜索营销"],
       "adjacentRoleFamilyIds": ["user-growth-operations", "market-research-strategy"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-marketing-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-marketing-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "market-research-strategy",
@@ -159,7 +159,7 @@
       "jdKeywords": ["市场调研", "消费者洞察", "竞品分析", "行业研究", "定位", "营销策略"],
       "adjacentRoleFamilyIds": ["brand-communications", "business-strategy-analysis"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-marketing-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-marketing-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "frontend-engineering",
@@ -172,7 +172,7 @@
       "jdKeywords": ["JavaScript", "TypeScript", "React", "Vue", "浏览器", "前端工程化"],
       "adjacentRoleFamilyIds": ["backend-engineering", "mobile-client-engineering"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-engineering-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-engineering-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "backend-engineering",
@@ -185,7 +185,7 @@
       "jdKeywords": ["Java", "Python", "Go", "数据库", "分布式", "微服务"],
       "adjacentRoleFamilyIds": ["frontend-engineering", "data-science-algorithm"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-engineering-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-engineering-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "mobile-client-engineering",
@@ -198,7 +198,7 @@
       "jdKeywords": ["Android", "iOS", "Swift", "Kotlin", "客户端", "跨端"],
       "adjacentRoleFamilyIds": ["frontend-engineering", "backend-engineering"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-engineering-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-engineering-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "data-analytics-bi",
@@ -211,7 +211,7 @@
       "jdKeywords": ["SQL", "指标体系", "数据看板", "可视化", "专题分析", "BI"],
       "adjacentRoleFamilyIds": ["business-strategy-analysis", "data-science-algorithm"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-data-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-data-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "business-strategy-analysis",
@@ -224,7 +224,7 @@
       "jdKeywords": ["商业分析", "经营分析", "战略", "业务模型", "行业研究", "决策支持"],
       "adjacentRoleFamilyIds": ["data-analytics-bi", "market-research-strategy"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-data-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-data-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "data-science-algorithm",
@@ -237,7 +237,7 @@
       "jdKeywords": ["机器学习", "算法", "特征工程", "模型评估", "Python", "数据挖掘"],
       "adjacentRoleFamilyIds": ["data-analytics-bi", "backend-engineering"],
       "sourceIds": ["mohrss-digital-occupations-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-data-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-data-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "accounting-audit-tax",
@@ -250,7 +250,7 @@
       "jdKeywords": ["会计准则", "审计", "税务", "财务报表", "内控", "CPA"],
       "adjacentRoleFamilyIds": ["fp-and-a-corporate-finance", "investment-research-risk"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-finance-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-finance-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "fp-and-a-corporate-finance",
@@ -263,7 +263,7 @@
       "jdKeywords": ["预算", "预测", "财务分析", "管理报表", "成本", "FP&A"],
       "adjacentRoleFamilyIds": ["accounting-audit-tax", "business-strategy-analysis"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-finance-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-finance-advisor", "reviewedAt": "2026-08-14" }
     },
     {
       "id": "investment-research-risk",
@@ -276,7 +276,7 @@
       "jdKeywords": ["投资研究", "估值", "风险管理", "行业研究", "金融模型", "CFA"],
       "adjacentRoleFamilyIds": ["fp-and-a-corporate-finance", "market-research-strategy"],
       "sourceIds": ["mohrss-occupation-classification-2022", "onet-occupation-taxonomy"],
-      "review": { "status": "reviewed", "reviewedBy": "morethan-finance-advisor", "reviewedAt": "2026-08-14" }
+      "review": { "status": "reviewed", "reviewedBy": "edutoro-finance-advisor", "reviewedAt": "2026-08-14" }
     }
   ],
   "mappingPolicy": {

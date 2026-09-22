@@ -33,7 +33,7 @@ export function buildPrivacySafeReportText(input) {
     .filter((item) => degradationOutcome(evidenceDegradation, item.id) !== "omitted")
     .slice(0, 3);
   const lines = [
-    "MoreThan 智能求职助手｜脱敏诊断报告",
+    "Edutoro 智能求职助手｜脱敏诊断报告",
     `生成时间：${formatChinaTime(generatedAt)}`,
     `主方向：${direction}`,
     `规则版本：${analysis.ruleSetVersion}`,

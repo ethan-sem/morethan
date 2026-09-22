@@ -21,7 +21,7 @@ function createInput() {
 describe("privacy-safe report text export", () => {
   it("exports the complete structured report with versions and boundaries", () => {
     const text = buildPrivacySafeReportText({ ...createInput(), generatedAt: NOW });
-    expect(text).toContain("MoreThan 智能求职助手｜脱敏诊断报告");
+    expect(text).toContain("Edutoro 智能求职助手｜脱敏诊断报告");
     expect(text).toContain("【30 秒结论】");
     expect(text).toContain("【核心优势】");
     expect(text).toContain("【主要短板与信息缺口】");

@@ -38,7 +38,7 @@ export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, act
     : "目前证据还不足，\n先补充事实再判断方向。";
   return (
     <div className="copilot-report-screen" data-report-document="career-copilot">
-      <header className="copilot-print-only copilot-print-header"><strong>MoreThan 智能求职助手</strong><span>实习 / 校招脱敏诊断报告</span></header>
+      <header className="copilot-print-only copilot-print-header"><strong>Edutoro 智能求职助手</strong><span>实习 / 校招脱敏诊断报告</span></header>
       <div className="copilot-report-head">
         <div><p className="copilot-eyebrow">30-SECOND DIAGNOSIS</p><h1>{headline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</h1></div>
         <aside><span>分析置信度</span><strong>{confidence}</strong><small>基于 {analysis.factsConsideredIds.length} 条已确认事实</small></aside>
@@ -58,7 +58,7 @@ export function ReportScreen({ analysis, jdGapAnalysis, applicationTierPlan, act
       {companyRoleRecommendations ? <CompanyRoleTargets recommendations={companyRoleRecommendations} /> : companyRoleStatus !== "idle" && <CompanyRoleLoadState status={companyRoleStatus} />}
       {actionPlan && <ActionPlanSummary actionPlan={actionPlan} facts={facts} conclusionProvenance={conclusionProvenance} onNext={onNext} />}
       <div className="copilot-report-actions no-print"><button type="button" className="copilot-secondary" onClick={onCorrect}>纠正事实</button><button type="button" className="copilot-primary" onClick={onNext}>查看行动计划 <ArrowRight size={17} /></button></div>
-      <footer className="copilot-print-only copilot-print-footer">MoreThan · 本报告仅供求职规划参考 · 申请前请核验公司官方招聘信息</footer>
+      <footer className="copilot-print-only copilot-print-footer">Edutoro · 本报告仅供求职规划参考 · 申请前请核验公司官方招聘信息</footer>
     </div>
   );
 }

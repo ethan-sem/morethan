@@ -60,7 +60,7 @@ export function createDefaultAnalysisRuleSet() {
     rules: BASE_RULES,
     aggregation: { method: "weighted_mean", roundingDigits: 2, exposeCompositeScore: false },
     limits: { strengths: 3, gaps: 3, actions: 5 },
-    metadata: { title: "MoreThan 实习校招通用证据规则", reviewedAt: "2026-08-13", changeReason: "M4-01 建立首版规则契约" },
+    metadata: { title: "Edutoro 实习校招通用证据规则", reviewedAt: "2026-08-13", changeReason: "M4-01 建立首版规则契约" },
   }));
 }
 

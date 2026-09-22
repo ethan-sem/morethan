@@ -104,7 +104,7 @@ const rollbackBuilds = await readJson(resolve(outputRoot, "rollback-builds.json"
 const candidate = {
   schemaVersion: "1.0.0",
   task: "M7-07",
-  candidateId: "MoreThan-Career-Copilot-MVP-FE-v1.0.1-rc.2",
+  candidateId: "Edutoro-Career-Copilot-MVP-FE-v1.0.1-rc.2",
   productVersion: "1.0.1",
   candidateSequence: "rc.2",
   generatedAt,

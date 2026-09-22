@@ -70,7 +70,7 @@ const parserAllowlist = [
 const isParser = (file) => parserAllowlist.some((pattern) => pattern.test(basename(file)));
 const businessChunks = allAssets.filter((item) => /\.(?:js|mjs)$/.test(item.file) && !isParser(item.file));
 const images = walk(dist).filter((file) => /\.(?:avif|gif|jpe?g|png|webp)$/i.test(file)).map((file) => measure(relative(dist, file)));
-const firstScreenImagePaths = ["assets/morethan-career-path-hero-v2.webp", "assets/morethan-logo-mark.png"];
+const firstScreenImagePaths = ["assets/edutoro-logo-mark.svg", "assets/edutoro-logo-source.png"];
 const firstScreenImages = firstScreenImagePaths.map(measure);
 
 const limits = {
